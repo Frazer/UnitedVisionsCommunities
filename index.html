@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>United Visions Communities</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
-      --forest-deep:   #0d211a;
-      --forest:        #14302500;
-      --forest-rich:   #1a3d2b;
-      --forest-mid:    #2a5c40;
-      --forest-light:  #3d7a58;
-      --amber:         #c07c20;
-      --amber-warm:    #d4943a;
-      --amber-glow:    #edb96a;
-      --cream:         #f6f0e6;
-      --cream-warm:    #ede5d2;
-      --parchment:     #d9cebc;
+      --forest-deep: #0d211a;
+      --forest: #14302500;
+      --forest-rich: #1a3d2b;
+      --forest-mid: #2a5c40;
+      --forest-light: #3d7a58;
+      --amber: #c07c20;
+      --amber-warm: #d4943a;
+      --amber-glow: #edb96a;
+      --cream: #f6f0e6;
+      --cream-warm: #ede5d2;
+      --parchment: #d9cebc;
       --parchment-mid: #c9bca8;
-      --text-ink:      #180f06;
-      --text-dark:     #2b1d0f;
-      --text-mid:      #4a3520;
-      --text-muted:    #7a6248;
+      --text-ink: #180f06;
+      --text-dark: #2b1d0f;
+      --text-mid: #4a3520;
+      --text-muted: #7a6248;
     }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -42,7 +54,9 @@
     /* ─── NAV ─────────────────────────────────────────── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
@@ -82,7 +96,9 @@
       transition: color 0.3s;
     }
 
-    .nav-links a:hover { color: var(--amber-glow); }
+    .nav-links a:hover {
+      color: var(--amber-glow);
+    }
 
     /* ─── HERO ────────────────────────────────────────── */
     .hero {
@@ -111,42 +127,80 @@
     }
 
     .orb-1 {
-      width: 70vw; height: 70vw;
-      max-width: 700px; max-height: 700px;
-      background: radial-gradient(circle at 40% 40%, rgba(42,92,64,0.55), transparent 65%);
-      top: -15%; left: -15%;
+      width: 70vw;
+      height: 70vw;
+      max-width: 700px;
+      max-height: 700px;
+      background: radial-gradient(circle at 40% 40%, rgba(42, 92, 64, 0.55), transparent 65%);
+      top: -15%;
+      left: -15%;
       animation: floatA 28s ease-in-out infinite;
     }
 
     .orb-2 {
-      width: 50vw; height: 50vw;
-      max-width: 500px; max-height: 500px;
-      background: radial-gradient(circle, rgba(192,124,32,0.25), transparent 65%);
-      bottom: -10%; right: -5%;
+      width: 50vw;
+      height: 50vw;
+      max-width: 500px;
+      max-height: 500px;
+      background: radial-gradient(circle, rgba(192, 124, 32, 0.25), transparent 65%);
+      bottom: -10%;
+      right: -5%;
       animation: floatB 22s ease-in-out infinite;
     }
 
     .orb-3 {
-      width: 40vw; height: 40vw;
-      max-width: 400px; max-height: 400px;
-      background: radial-gradient(circle, rgba(26,61,43,0.4), transparent 65%);
-      top: 30%; left: 55%;
+      width: 40vw;
+      height: 40vw;
+      max-width: 400px;
+      max-height: 400px;
+      background: radial-gradient(circle, rgba(26, 61, 43, 0.4), transparent 65%);
+      top: 30%;
+      left: 55%;
       animation: floatC 34s ease-in-out infinite;
     }
 
     @keyframes floatA {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      40%       { transform: translate(40px,-30px) scale(1.06); }
-      70%       { transform: translate(-20px, 25px) scale(0.96); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      40% {
+        transform: translate(40px, -30px) scale(1.06);
+      }
+
+      70% {
+        transform: translate(-20px, 25px) scale(0.96);
+      }
     }
+
     @keyframes floatB {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      35%       { transform: translate(-30px, 20px) scale(1.04); }
-      65%       { transform: translate(25px,-15px) scale(0.97); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      35% {
+        transform: translate(-30px, 20px) scale(1.04);
+      }
+
+      65% {
+        transform: translate(25px, -15px) scale(0.97);
+      }
     }
+
     @keyframes floatC {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50%       { transform: translate(-40px, 30px) scale(1.08); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-40px, 30px) scale(1.08);
+      }
     }
 
     /* Fine grain overlay */
@@ -163,9 +217,10 @@
     .hero-rule {
       position: absolute;
       top: 50%;
-      left: 8%; right: 8%;
+      left: 8%;
+      right: 8%;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(237,185,106,0.12), transparent);
+      background: linear-gradient(to right, transparent, rgba(237, 185, 106, 0.12), transparent);
       pointer-events: none;
     }
 
@@ -243,7 +298,7 @@
     .btn-ghost {
       display: inline-block;
       padding: 0.9rem 2.4rem;
-      border: 1px solid rgba(237,185,106,0.45);
+      border: 1px solid rgba(237, 185, 106, 0.45);
       color: var(--amber-glow);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.75rem;
@@ -254,7 +309,7 @@
     }
 
     .btn-ghost:hover {
-      background: rgba(237,185,106,0.12);
+      background: rgba(237, 185, 106, 0.12);
       border-color: var(--amber-glow);
     }
 
@@ -271,7 +326,9 @@
       transition: all 0.3s ease;
     }
 
-    .btn-solid:hover { background: var(--forest-light); }
+    .btn-solid:hover {
+      background: var(--forest-light);
+    }
 
     .hero-scroll {
       position: absolute;
@@ -291,24 +348,40 @@
       font-size: 0.6rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(246,240,230,0.3);
+      color: rgba(246, 240, 230, 0.3);
     }
 
     .scroll-stem {
       width: 1px;
       height: 44px;
-      background: linear-gradient(to bottom, rgba(237,185,106,0.5), transparent);
+      background: linear-gradient(to bottom, rgba(237, 185, 106, 0.5), transparent);
       animation: stemPulse 2.2s ease-in-out infinite;
     }
 
     @keyframes stemPulse {
-      0%, 100% { opacity: 0.5; transform: scaleY(1); }
-      50%       { opacity: 1;   transform: scaleY(0.7); }
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scaleY(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(0.7);
+      }
     }
 
     @keyframes riseIn {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* ─── INTRO ───────────────────────────────────────── */
@@ -363,7 +436,9 @@
     .pillars::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 1px;
       background: linear-gradient(to right, transparent, var(--parchment-mid), transparent);
     }
@@ -402,7 +477,9 @@
 
     .card-accent {
       position: absolute;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--forest-light), var(--amber-warm));
       transform: scaleX(0);
@@ -411,16 +488,18 @@
     }
 
     .card:hover .card-accent,
-    .card.open .card-accent { transform: scaleX(1); }
+    .card.open .card-accent {
+      transform: scaleX(1);
+    }
 
     .card:hover {
-      border-color: rgba(61,122,88,0.4);
-      box-shadow: 0 6px 32px rgba(26,53,39,0.07);
+      border-color: rgba(61, 122, 88, 0.4);
+      box-shadow: 0 6px 32px rgba(26, 53, 39, 0.07);
     }
 
     .card.open {
-      border-color: rgba(42,92,64,0.5);
-      box-shadow: 0 8px 40px rgba(26,53,39,0.1);
+      border-color: rgba(42, 92, 64, 0.5);
+      box-shadow: 0 8px 40px rgba(26, 53, 39, 0.1);
     }
 
     .card-head {
@@ -446,12 +525,13 @@
 
     .card:hover .card-icon,
     .card.open .card-icon {
-      background: rgba(26,61,43,0.06);
-      border-color: rgba(61,122,88,0.3);
+      background: rgba(26, 61, 43, 0.06);
+      border-color: rgba(61, 122, 88, 0.3);
     }
 
     .card-icon svg {
-      width: 20px; height: 20px;
+      width: 20px;
+      height: 20px;
       stroke: var(--text-muted);
       fill: none;
       stroke-width: 1.5;
@@ -461,9 +541,14 @@
     }
 
     .card:hover .card-icon svg,
-    .card.open .card-icon svg { stroke: var(--forest-mid); }
+    .card.open .card-icon svg {
+      stroke: var(--forest-mid);
+    }
 
-    .card-meta { flex: 1; min-width: 0; }
+    .card-meta {
+      flex: 1;
+      min-width: 0;
+    }
 
     .card-num {
       font-size: 0.6rem;
@@ -491,7 +576,8 @@
     }
 
     .card-toggle {
-      width: 26px; height: 26px;
+      width: 26px;
+      height: 26px;
       flex-shrink: 0;
       border-radius: 50%;
       border: 1px solid var(--parchment);
@@ -499,11 +585,14 @@
       align-items: center;
       justify-content: center;
       color: var(--text-muted);
-      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       margin-top: 2px;
     }
 
-    .card:hover .card-toggle { border-color: var(--forest-light); color: var(--forest-mid); }
+    .card:hover .card-toggle {
+      border-color: var(--forest-light);
+      color: var(--forest-mid);
+    }
 
     .card.open .card-toggle {
       background: var(--forest-rich);
@@ -513,7 +602,8 @@
     }
 
     .card-toggle svg {
-      width: 10px; height: 10px;
+      width: 10px;
+      height: 10px;
       stroke: currentColor;
       fill: none;
       stroke-width: 2.2;
@@ -524,10 +614,12 @@
     .card-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1);
+      transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .card.open .card-body { max-height: 700px; }
+    .card.open .card-body {
+      max-height: 700px;
+    }
 
     .card-body-inner {
       padding: 1.5rem 1.75rem 1.75rem;
@@ -554,7 +646,9 @@
       margin-bottom: 0.8rem;
     }
 
-    .card-body-inner p:last-child { margin-bottom: 0; }
+    .card-body-inner p:last-child {
+      margin-bottom: 0;
+    }
 
     /* ─── VISION QUOTE ────────────────────────────────── */
     .vision {
@@ -571,7 +665,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 32rem;
       line-height: 1;
-      color: rgba(255,255,255,0.025);
+      color: rgba(255, 255, 255, 0.025);
       pointer-events: none;
       user-select: none;
     }
@@ -584,15 +678,19 @@
     }
 
     .vision-orb-1 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(42,92,64,0.4), transparent);
-      top: -100px; right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(42, 92, 64, 0.4), transparent);
+      top: -100px;
+      right: -100px;
     }
 
     .vision-orb-2 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(192,124,32,0.2), transparent);
-      bottom: -50px; left: 10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(192, 124, 32, 0.2), transparent);
+      bottom: -50px;
+      left: 10%;
     }
 
     .vision-inner {
@@ -603,7 +701,9 @@
       text-align: center;
     }
 
-    .vision .eyebrow { color: var(--amber-warm); }
+    .vision .eyebrow {
+      color: var(--amber-warm);
+    }
 
     .vision-quote {
       font-family: 'Cormorant Garamond', serif;
@@ -611,7 +711,7 @@
       font-weight: 300;
       font-style: italic;
       line-height: 1.65;
-      color: rgba(246,240,230,0.88);
+      color: rgba(246, 240, 230, 0.88);
       margin: 1.5rem 0 2rem;
     }
 
@@ -622,8 +722,9 @@
     }
 
     .vision-bar {
-      width: 48px; height: 1px;
-      background: rgba(237,185,106,0.5);
+      width: 48px;
+      height: 1px;
+      background: rgba(237, 185, 106, 0.5);
       margin: 0 auto 1.5rem;
     }
 
@@ -631,7 +732,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(246,240,230,0.35);
+      color: rgba(246, 240, 230, 0.35);
     }
 
     /* ─── VALUES STRIP ────────────────────────────────── */
@@ -649,7 +750,9 @@
       margin: 0 auto;
     }
 
-    .value-item { text-align: center; }
+    .value-item {
+      text-align: center;
+    }
 
     .value-glyph {
       font-family: 'Cormorant Garamond', serif;
@@ -726,7 +829,9 @@
       transition: background 0.3s;
     }
 
-    .btn-forest:hover { background: var(--forest-mid); }
+    .btn-forest:hover {
+      background: var(--forest-mid);
+    }
 
     .btn-outline {
       display: inline-block;
@@ -757,7 +862,7 @@
       font-size: 1.2rem;
       font-weight: 300;
       letter-spacing: 0.08em;
-      color: rgba(246,240,230,0.75);
+      color: rgba(246, 240, 230, 0.75);
       margin-bottom: 0.5rem;
     }
 
@@ -765,7 +870,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(246,240,230,0.2);
+      color: rgba(246, 240, 230, 0.2);
     }
 
     .footer-links {
@@ -780,12 +885,14 @@
       font-size: 0.68rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(246,240,230,0.3);
+      color: rgba(246, 240, 230, 0.3);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .footer-links a:hover { color: var(--amber-warm); }
+    .footer-links a:hover {
+      color: var(--amber-warm);
+    }
 
     /* ─── SCROLL ANIMATIONS ───────────────────────────── */
     .reveal {
@@ -794,35 +901,77 @@
       transition: opacity 0.75s ease, transform 0.75s ease;
     }
 
-    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-    .reveal-d1 { transition-delay: 0.08s; }
-    .reveal-d2 { transition-delay: 0.16s; }
-    .reveal-d3 { transition-delay: 0.24s; }
-    .reveal-d4 { transition-delay: 0.32s; }
-    .reveal-d5 { transition-delay: 0.40s; }
-    .reveal-d6 { transition-delay: 0.48s; }
+    .reveal-d1 {
+      transition-delay: 0.08s;
+    }
+
+    .reveal-d2 {
+      transition-delay: 0.16s;
+    }
+
+    .reveal-d3 {
+      transition-delay: 0.24s;
+    }
+
+    .reveal-d4 {
+      transition-delay: 0.32s;
+    }
+
+    .reveal-d5 {
+      transition-delay: 0.40s;
+    }
+
+    .reveal-d6 {
+      transition-delay: 0.48s;
+    }
 
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 760px) {
-      nav { padding: 1.25rem 1.5rem; }
-      nav.scrolled { padding: 0.875rem 1.5rem; }
-      .nav-links { display: none; }
+      nav {
+        padding: 1.25rem 1.5rem;
+      }
 
-      .grid { grid-template-columns: 1fr; }
+      nav.scrolled {
+        padding: 0.875rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
 
       .values-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
 
-      .intro { padding: 5rem 1.5rem 4rem; }
-      .pillars { padding: 5rem 1.5rem 6rem; }
-      .vision { padding: 6rem 1.5rem; }
-      .cta { padding: 6rem 1.5rem; }
+      .intro {
+        padding: 5rem 1.5rem 4rem;
+      }
+
+      .pillars {
+        padding: 5rem 1.5rem 6rem;
+      }
+
+      .vision {
+        padding: 6rem 1.5rem;
+      }
+
+      .cta {
+        padding: 6rem 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- NAV -->
@@ -852,7 +1001,8 @@
         <span class="line-italic">Visions</span>
       </h1>
       <p class="hero-tagline">
-        A community where every person, every meal, every act of creation is oriented toward the deepest flourishing of each other — and the world.
+        A community where every person, every meal, every act of creation is oriented toward the deepest flourishing of
+        each other — and the world.
       </p>
       <div class="hero-cta-wrap">
         <a href="#pillars" class="btn-ghost">Explore the Vision</a>
@@ -871,7 +1021,9 @@
     <div class="intro-inner reveal">
       <span class="eyebrow">The Dream</span>
       <p class="intro-body">
-        Imagine <strong>hundreds of people living and building together</strong> — connected by archways and gardens, sharing meals, sharing creativity, sharing a commitment to transform their minds, their relationships, and the world.
+        Imagine <strong>hundreds of people living and building together</strong> — connected by archways and gardens,
+        sharing meals, sharing creativity, sharing a commitment to transform their minds, their relationships, and the
+        world.
         This is not a retreat. <strong>This is how we want to live.</strong>
       </p>
       <div class="intro-divider"></div>
@@ -894,26 +1046,35 @@
           <div class="card-icon">
             <!-- Bell -->
             <svg viewBox="0 0 24 24">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-              <line x1="12" y1="2" x2="12" y2="5"/>
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              <line x1="12" y1="2" x2="12" y2="5" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">01</div>
             <h3 class="card-title">Mindful Living</h3>
-            <p class="card-teaser">Morning meditations, community bells, and collective mental rehearsal to start every day with intention.</p>
+            <p class="card-teaser">Morning meditations, community bells, and collective mental rehearsal to start every
+              day with intention.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
             <p class="card-pullquote">"The whole community comes in excited to level up their mind."</p>
-            <p>Each day begins with a shared meditation — not a quiet, solitary act, but a collective experience with epic bells, dramatic lighting, and the energy of hundreds of people orienting themselves toward their highest potential.</p>
-            <p>Compassion meditation is a daily practice. You move through the community and feel genuinely loved, cared for, and supported — not by chance, but because everyone has cultivated that quality of presence together.</p>
-            <p>Mental rehearsal and positive visualization are woven into everyday rhythms. We rehearse who we want to be, not just what we want to accomplish.</p>
+            <p>Each day begins with a shared meditation — not a quiet, solitary act, but a collective experience with
+              epic bells, dramatic lighting, and the energy of hundreds of people orienting themselves toward their
+              highest potential.</p>
+            <p>Compassion meditation is a daily practice. You move through the community and feel genuinely loved, cared
+              for, and supported — not by chance, but because everyone has cultivated that quality of presence together.
+            </p>
+            <p>Mental rehearsal and positive visualization are woven into everyday rhythms. We rehearse who we want to
+              be, not just what we want to accomplish.</p>
           </div>
         </div>
       </div>
@@ -925,27 +1086,37 @@
           <div class="card-icon">
             <!-- Users -->
             <svg viewBox="0 0 24 24">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">02</div>
             <h3 class="card-title">Communal Connection</h3>
-            <p class="card-teaser">Shared meals, cooperative living, and loving relationships — the simple infrastructure of belonging.</p>
+            <p class="card-teaser">Shared meals, cooperative living, and loving relationships — the simple
+              infrastructure of belonging.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
-            <p class="card-pullquote">"You're on the roster once every couple of weeks — you make something great, share it with everybody, and every other meal is shared with you."</p>
-            <p>Communal living radically simplifies the logistics of daily life. Freed from cooking three meals a day alone, you have energy and attention for what matters most. The shared kitchen becomes a place of creativity and generosity.</p>
-            <p>Beautiful architecture with archways and hanging gardens connects building to building. The physical environment is intentionally designed so chance encounters are beautiful, and solitude is always available when needed.</p>
-            <p>Gyms, sports grounds, a movie theater — the amenities of a rich life, shared rather than individually owned. Community is not a compromise. It's an upgrade.</p>
+            <p class="card-pullquote">"You're on the roster once every couple of weeks — you make something great, share
+              it with everybody, and every other meal is shared with you."</p>
+            <p>Communal living radically simplifies the logistics of daily life. Freed from cooking three meals a day
+              alone, you have energy and attention for what matters most. The shared kitchen becomes a place of
+              creativity and generosity.</p>
+            <p>Beautiful architecture with archways and hanging gardens connects building to building. The physical
+              environment is intentionally designed so chance encounters are beautiful, and solitude is always available
+              when needed.</p>
+            <p>Gyms, sports grounds, a movie theater — the amenities of a rich life, shared rather than individually
+              owned. Community is not a compromise. It's an upgrade.</p>
           </div>
         </div>
       </div>
@@ -957,24 +1128,35 @@
           <div class="card-icon">
             <!-- Sparkle / Star -->
             <svg viewBox="0 0 24 24">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">03</div>
             <h3 class="card-title">Creative Culture</h3>
-            <p class="card-teaser">Fashion lines, VR worlds, films, books, podcasts — and the legendary "Masaya Jams" where creativity meets enlightenment.</p>
+            <p class="card-teaser">Fashion lines, VR worlds, films, books, podcasts — and the legendary "Masaya Jams"
+              where creativity meets enlightenment.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
-            <p class="card-pullquote">"Imagine you spending some time just role-playing being as expressive and as enlightening as you can."</p>
-            <p>Masaya Jams are live community sessions where cameras roll and everyone is encouraged to inhabit the kindest, most awesome, wildest version of themselves — like theater games, but the goal is enlightenment. The output is something worth sharing with the world.</p>
-            <p>The community actively creates: fashion lines where the imagery makes people feel love for all beings; VR worlds built collaboratively in an afternoon; films, TV shows, books, and podcasts carrying a clear intention toward human flourishing.</p>
-            <p>Music, art, and the words in our spaces are chosen intentionally. Lyrics that lift. Visuals that inspire. The culture we make together can be exported everywhere.</p>
+            <p class="card-pullquote">"Imagine you spending some time just role-playing being as expressive and as
+              enlightening as you can."</p>
+            <p>Masaya Jams are live community sessions where cameras roll and everyone is encouraged to inhabit the
+              kindest, most awesome, wildest version of themselves — like theater games, but the goal is enlightenment.
+              The output is something worth sharing with the world.</p>
+            <p>The community actively creates: fashion lines where the imagery makes people feel love for all beings; VR
+              worlds built collaboratively in an afternoon; films, TV shows, books, and podcasts carrying a clear
+              intention toward human flourishing.</p>
+            <p>Music, art, and the words in our spaces are chosen intentionally. Lyrics that lift. Visuals that inspire.
+              The culture we make together can be exported everywhere.</p>
           </div>
         </div>
       </div>
@@ -986,25 +1168,34 @@
           <div class="card-icon">
             <!-- Shield check -->
             <svg viewBox="0 0 24 24">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">04</div>
             <h3 class="card-title">Ethics & Impact</h3>
-            <p class="card-teaser">Ethical consumption, environmental care, and a shared commitment to not causing harm — in every purchase, every choice.</p>
+            <p class="card-teaser">Ethical consumption, environmental care, and a shared commitment to not causing harm
+              — in every purchase, every choice.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
-            <p class="card-pullquote">"We don't buy stuff from places where anyone was hurt — and we're kind to the environment."</p>
-            <p>Ethics isn't a policy here — it's a shared value running through every decision. Where we source food. What we build with. How we engage the wider world. The community has agreed that its positive intention extends not just to each other, but to all living beings.</p>
-            <p>Every member is excited not just to help one another, but to have a positive impact beyond these walls. We want everything we make, buy, eat, and create to be a net positive in the world.</p>
-            <p>This is not austerity. Ethical living is joyful, beautiful, and abundant. It simply requires intention — and a community committed to holding each other to it, with kindness.</p>
+            <p class="card-pullquote">"We don't buy stuff from places where anyone was hurt — and we're kind to the
+              environment."</p>
+            <p>Ethics isn't a policy here — it's a shared value running through every decision. Where we source food.
+              What we build with. How we engage the wider world. The community has agreed that its positive intention
+              extends not just to each other, but to all living beings.</p>
+            <p>Every member is excited not just to help one another, but to have a positive impact beyond these walls.
+              We want everything we make, buy, eat, and create to be a net positive in the world.</p>
+            <p>This is not austerity. Ethical living is joyful, beautiful, and abundant. It simply requires intention —
+              and a community committed to holding each other to it, with kindness.</p>
           </div>
         </div>
       </div>
@@ -1016,25 +1207,35 @@
           <div class="card-icon">
             <!-- Book open -->
             <svg viewBox="0 0 24 24">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">05</div>
             <h3 class="card-title">Education & Growth</h3>
-            <p class="card-teaser">Schools where children learn mindfulness and confidence — not just academic preparation.</p>
+            <p class="card-teaser">Schools where children learn mindfulness and confidence — not just academic
+              preparation.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
-            <p class="card-pullquote">"A culture where people are actively helping everyone's mind be awesome is a very different culture."</p>
-            <p>Our schools teach mindfulness, kindness, emotional confidence, and how to handle different scenarios with grace. Children mentally rehearse being their best selves — the same practice the adults use, taught from the very beginning.</p>
-            <p>Consider the difference: in a school where no one teaches mental rehearsal, some children will naturally develop it and others will rehearse failure. We choose to deliberately bring every mind toward its highest potential.</p>
-            <p>This extends beyond school: workplaces where teams practice positive visualization together, where friendships are loving and genuinely supportive. The whole environment is designed for flourishing.</p>
+            <p class="card-pullquote">"A culture where people are actively helping everyone's mind be awesome is a very
+              different culture."</p>
+            <p>Our schools teach mindfulness, kindness, emotional confidence, and how to handle different scenarios with
+              grace. Children mentally rehearse being their best selves — the same practice the adults use, taught from
+              the very beginning.</p>
+            <p>Consider the difference: in a school where no one teaches mental rehearsal, some children will naturally
+              develop it and others will rehearse failure. We choose to deliberately bring every mind toward its highest
+              potential.</p>
+            <p>This extends beyond school: workplaces where teams practice positive visualization together, where
+              friendships are loving and genuinely supportive. The whole environment is designed for flourishing.</p>
           </div>
         </div>
       </div>
@@ -1046,26 +1247,36 @@
           <div class="card-icon">
             <!-- Globe -->
             <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
             </svg>
           </div>
           <div class="card-meta">
             <div class="card-num">06</div>
             <h3 class="card-title">World Outreach</h3>
-            <p class="card-teaser">Welcoming visitors, inspiring world leaders, and sharing the culture we've built with everyone ready to receive it.</p>
+            <p class="card-teaser">Welcoming visitors, inspiring world leaders, and sharing the culture we've built with
+              everyone ready to receive it.</p>
           </div>
           <div class="card-toggle">
-            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
           </div>
         </div>
         <div class="card-body">
           <div class="card-body-inner">
-            <p class="card-pullquote">"How do we inspire filmmakers, sports stars, and world leaders to come practice meditation with us — and feel what it's like to envision a world where everybody cares?"</p>
-            <p>United Visions is not a refuge from the world — it's a laboratory for it. Visitors come to experience the architecture, the food, the gardens, the art, and the rare feeling of being in a community truly oriented toward human flourishing.</p>
-            <p>We actively look for ways to share what works. Creative culture, spiritual practices, ethical frameworks — the Masaya Jams are streamed, the films are released, the books are published.</p>
-            <p>We encourage everyone to find or create their own intentional communities: to explore what resonates, practice their dreams, and discover that society itself becomes your commune when you approach it with real intention.</p>
+            <p class="card-pullquote">"How do we inspire filmmakers, sports stars, and world leaders to come practice
+              meditation with us — and feel what it's like to envision a world where everybody cares?"</p>
+            <p>United Visions is not a refuge from the world — it's a laboratory for it. Visitors come to experience the
+              architecture, the food, the gardens, the art, and the rare feeling of being in a community truly oriented
+              toward human flourishing.</p>
+            <p>We actively look for ways to share what works. Creative culture, spiritual practices, ethical frameworks
+              — the Masaya Jams are streamed, the films are released, the books are published.</p>
+            <p>We encourage everyone to find or create their own intentional communities: to explore what resonates,
+              practice their dreams, and discover that society itself becomes your commune when you approach it with
+              real intention.</p>
           </div>
         </div>
       </div>
@@ -1081,7 +1292,9 @@
     <div class="vision-inner reveal">
       <span class="eyebrow">The Vision</span>
       <blockquote class="vision-quote">
-        "I want to live in a community where everybody values how amazing it is that we can <strong>transform our minds</strong> and our feelings — and that we're all practicing, each day, together. Where our positive intention is not just for each other, but <strong>for the world</strong>."
+        "I want to live in a community where everybody values how amazing it is that we can <strong>transform our
+          minds</strong> and our feelings — and that we're all practicing, each day, together. Where our positive
+        intention is not just for each other, but <strong>for the world</strong>."
       </blockquote>
       <div class="vision-bar"></div>
       <p class="vision-attr">Frazer Kirkman &mdash; United Visions Communities</p>
@@ -1094,17 +1307,20 @@
       <div class="value-item reveal reveal-d1">
         <span class="value-glyph">I</span>
         <div class="value-name">Presence</div>
-        <p class="value-desc">Your attention is your most precious resource. What you put it into decides the direction of your life — and collectively, the direction of the world.</p>
+        <p class="value-desc">Your attention is your most precious resource. What you put it into decides the direction
+          of your life — and collectively, the direction of the world.</p>
       </div>
       <div class="value-item reveal reveal-d2">
         <span class="value-glyph">II</span>
         <div class="value-name">Intention</div>
-        <p class="value-desc">Every meal, every creative act, every conversation is an opportunity to ask: what is the best possible impact I can have in this moment?</p>
+        <p class="value-desc">Every meal, every creative act, every conversation is an opportunity to ask: what is the
+          best possible impact I can have in this moment?</p>
       </div>
       <div class="value-item reveal reveal-d3">
         <span class="value-glyph">III</span>
         <div class="value-name">Connection</div>
-        <p class="value-desc">Help people find their team. Help them follow their dreams. Share the stuff that's awesome. The whole world is one community working together.</p>
+        <p class="value-desc">Help people find their team. Help them follow their dreams. Share the stuff that's
+          awesome. The whole world is one community working together.</p>
       </div>
     </div>
   </section>
@@ -1112,13 +1328,16 @@
   <!-- CTA -->
   <section class="cta" id="connect">
     <span class="eyebrow reveal">Join the Vision</span>
-    <h2 class="cta-title reveal"><em>What would you do</em> if everything in your life was exactly as you wanted it to be?</h2>
+    <h2 class="cta-title reveal"><em>What would you do</em> if everything in your life was exactly as you wanted it to
+      be?</h2>
     <p class="cta-body reveal">
-      That question is the start of everything. United Visions Communities begins with imagining the life you most want to live — then finding others who want to build it with you.
+      That question is the start of everything. United Visions Communities begins with imagining the life you most want
+      to live — then finding others who want to build it with you.
     </p>
     <div class="cta-btns reveal">
-      <a href="mailto:frazer@unitedvisions.community" class="btn-forest">Reach Out to Frazer</a>
-      <a href="https://www.ic.org" target="_blank" rel="noopener noreferrer" class="btn-outline">Find a Community Near You</a>
+      <a href="mailto:frazer@unitedvisions.org" class="btn-forest">Reach Out to Frazer</a>
+      <a href="https://www.ic.org" target="_blank" rel="noopener noreferrer" class="btn-outline">Find a Community Near
+        You</a>
     </div>
   </section>
 
@@ -1175,4 +1394,5 @@
   </script>
 
 </body>
+
 </html>
