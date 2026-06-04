@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Beautiful Creatures — Compassionate Community</title>
+  <meta name="description"
+    content="ABC: an intentional vegan community and animal sanctuary within two hours of the San Francisco Bay Area.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Grotesk:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Archivo+Black&family=Libre+Franklin:wght@300;400;600;800&family=JetBrains+Mono:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+  <link id="zen-theme" rel="stylesheet" href="views/sanctuary.css">
+
+  <style>
+    .zen-switch {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 9999;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+
+    .zen-switch * {
+      box-sizing: border-box;
+    }
+
+    .zen-switch-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(18, 18, 22, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .zen-switch-toggle:hover {
+      transform: translateY(-2px);
+      background: rgba(28, 28, 34, 0.92);
+    }
+
+    .zen-switch-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .zen-switch-current {
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .zen-switch-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8b89a, #5d9478);
+      box-shadow: 0 0 10px rgba(93, 148, 120, 0.8);
+    }
+
+    .zen-switch-panel {
+      position: absolute;
+      right: 0;
+      bottom: calc(100% + 0.75rem);
+      width: 300px;
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: rgba(18, 18, 22, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.98);
+      transform-origin: bottom right;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+
+    .zen-switch.open .zen-switch-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .zen-switch-head {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      padding: 0.4rem 0.6rem 0.7rem;
+    }
+
+    .zen-switch-head span {
+      display: block;
+      margin-top: 0.25rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .zen-switch-panel ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .zen-opt {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
+      padding: 0.65rem 0.7rem;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: #fff;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+
+    .zen-opt:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .zen-opt.active {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .zen-opt-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .zen-opt-name::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--swatch, #888);
+      flex-shrink: 0;
+    }
+
+    .zen-opt.active .zen-opt-name::after {
+      content: '✓';
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .zen-opt-desc {
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.42);
+      padding-left: 1.2rem;
+    }
+
+    @media (max-width: 760px) {
+      .zen-switch-panel {
+        width: min(300px, calc(100vw - 2.5rem));
+      }
+    }
+
+    .intro-body-follow {
+      margin-top: 1.75rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="nav">
+    <a href="#top" class="nav-logo">ABC</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Elements</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-canvas">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-grain"></div>
+    <div class="hero-rule"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Compassionate Community</p>
+      <h1 class="hero-title">
+        All Beautiful
+        <span class="line-italic">Creatures</span>
+      </h1>
+      <p class="hero-tagline">
+        A thriving intentional community within two hours of the San Francisco Bay Area — vegan values, sanctuary
+        stewardship, and education as a refuge for people and animals alike.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="#pillars" class="btn-ghost">Explore the Plan</a>
+        <a href="#connect" class="btn-solid">Join the Founding Vision</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-stem"></div>
+    </div>
+  </section>
+
+  <section class="intro" id="about">
+    <div class="intro-inner reveal">
+      <span class="eyebrow">Vision &amp; Mission</span>
+      <p class="intro-body">
+        <strong>Our vision</strong> is to create a thriving intentional community that exemplifies compassionate living
+        through vegan values, sanctuary stewardship, and education — serving as a refuge for people and animals.
+      </p>
+      <p class="intro-body intro-body-follow">
+        <strong>Our mission</strong> is to provide a sustainable rural haven for individuals of all ages who are
+        passionate about animal rights, veganism, and conscious living — combining co-housing, sanctuary care, and
+        education to support both resident members and mission-aligned visitors.
+      </p>
+      <div class="intro-divider"></div>
+    </div>
+  </section>
+
+  <section class="pillars" id="pillars">
+    <div class="section-head reveal">
+      <span class="eyebrow">Core Elements</span>
+      <h2 class="section-title">How ABC Comes to Life</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card reveal reveal-d1">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">01</div>
+            <h3 class="card-title">Community Living</h3>
+            <p class="card-teaser">Eco-friendly casitas, a shared community house, and guest space for advocates and
+              program participants.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Individual homes, shared meals, and room to gather — rural living built for
+              connection."</p>
+            <p>Each full-time resident, member, or family has their own eco-friendly casita — private space rooted in
+              the land, with the richness of community always nearby.</p>
+            <p>A central community building anchors daily life: a large kitchen, dining area, lounge, and flexible event
+              space for meals, workshops, and celebration.</p>
+            <p>Guest rooms or cottages welcome short-term program participants and visiting advocates — so the community
+              can host the movement, not only house its members.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d2">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">02</div>
+            <h3 class="card-title">Animal Sanctuary</h3>
+            <p class="card-teaser">A small, cared-for family of rescued animals — pigs, cows, donkeys, chickens, dogs,
+              cats, and more.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Sanctuary is not a backdrop — it is the heart of why we gather."</p>
+            <p>ABC is home to a modest number of rescued animals, each known by name and story. Residents participate in
+              daily care and education, learning ethical stewardship through practice.</p>
+            <p>Species may include pigs, cows, donkeys, chickens, dogs, and cats — chosen with care for the land, the
+              animals' wellbeing, and meaningful engagement with visitors.</p>
+            <p>Public programs invite guests to witness compassionate animal care firsthand — turning empathy into
+              understanding, and understanding into lasting change.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d3">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">03</div>
+            <h3 class="card-title">Programs &amp; Offerings</h3>
+            <p class="card-teaser">Vegan cooking, wellness retreats, hands-on animal care, and space for changemakers to
+              rest and strategize.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Education that nourishes the body, calms the mind, and deepens commitment to all
+              beings."</p>
+            <p><strong>Vegan cooking</strong> — weekend intensives and single-day workshops where plant-based cuisine
+              becomes a skill, a joy, and an act of advocacy.</p>
+            <p><strong>Wellness retreats</strong> — yoga, meditation, and aerial programs that support healing and align
+              body-mind practice with plant-based living.</p>
+            <p><strong>Animal care experiences</strong> — hands-on husbandry and sanctuary education for visitors who want
+              to learn by doing.</p>
+            <p><strong>Retreat space for changemakers</strong> — quiet, mission-aligned hosting for founders, activists,
+              and nonprofit teams who need ground to think, plan, and restore.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d4">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">04</div>
+            <h3 class="card-title">Who We Serve</h3>
+            <p class="card-teaser">Animal rights advocates, plant-based innovators, and anyone seeking deeper alignment
+              with compassionate living.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"A community for people already doing the work — and those ready to begin."</p>
+            <p><strong>Animal rights &amp; vegan advocates</strong> who want to live their values daily, not only campaign
+              for them.</p>
+            <p><strong>Alternative protein founders, ethical investors, and nonprofit leaders</strong> seeking a physical
+              hub near the Bay Area to connect, retreat, and collaborate.</p>
+            <p><strong>Health-conscious individuals</strong> drawn to plant-based wellness, mindful living, and a
+              culture where compassion is the default — not the exception.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d5">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">05</div>
+            <h3 class="card-title">Revenue &amp; Sustainability</h3>
+            <p class="card-teaser">A diversified model — resident fees, programs, hospitality, grants, and mission-aligned
+              products.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Financial sustainability in service of sanctuary — never the other way around."
+            </p>
+            <p><strong>Resident monthly fees</strong> through lease or equity-based structures that fund operations while
+              keeping membership accessible to mission-aligned households.</p>
+            <p><strong>Workshop &amp; retreat tuition</strong> for vegan cooking, animal care, and wellness programming —
+              weekend intensives and day events.</p>
+            <p><strong>Short-term stays &amp; event rentals</strong> for guests, advocates, and aligned gatherings.</p>
+            <p><strong>Donor &amp; grant support</strong> especially directed toward sanctuary operations, animal care,
+              and public education.</p>
+            <p><strong>Optional revenue</strong> from plant-based products, branded merchandise, or an ABC credit card
+              that channels everyday purchases back into the community's mission.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d6">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">06</div>
+            <h3 class="card-title">Development &amp; Funding</h3>
+            <p class="card-teaser">20–50 rural acres within 90 minutes of the Bay — built in phases with founding
+              investment and grant support.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10">
+              <line x1="5" y1="1" x2="5" y2="9" />
+              <line x1="1" y1="5" x2="9" y2="5" />
+            </svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"From feasibility to sanctuary — a roadmap the movement can learn from."</p>
+            <p><strong>Land acquisition</strong> — feasibility planning for a rural parcel of 20–50 acres, within 90
+              minutes of the San Francisco Bay Area and no more than two hours from the region's core.</p>
+            <p><strong>Seed capital</strong> — founding group contributions and mission-aligned angel investors to secure
+              the land and begin core infrastructure.</p>
+            <p><strong>Phase 1</strong> — community house, 3–5 casitas, and basic animal sanctuary infrastructure.</p>
+            <p><strong>Phase 2</strong> — additional casitas, guesthouses, and expanded programming facilities.</p>
+            <p><strong>Grants &amp; nonprofit partnerships</strong> — funding streams for sanctuary operations, animal
+              care, and advocacy education programs.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vision" id="vision">
+    <div class="vision-bg-mark" aria-hidden="true">&ldquo;</div>
+    <div class="vision-orb vision-orb-1"></div>
+    <div class="vision-orb vision-orb-2"></div>
+    <div class="vision-inner reveal">
+      <span class="eyebrow">Why ABC Matters</span>
+      <blockquote class="vision-quote">
+        A place where <strong>compassion is lived</strong> — not lectured. Where rescued animals are neighbors, vegan food
+        is shared at every table, and changemakers find rest enough to keep building a world that honors <strong>all
+          beautiful creatures</strong>.
+      </blockquote>
+      <div class="vision-bar"></div>
+      <p class="vision-attr">All Beautiful Creatures (ABC) Compassionate Community</p>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="values-inner">
+      <div class="value-item reveal reveal-d1">
+        <span class="value-glyph">I</span>
+        <div class="value-name">Replicable Model</div>
+        <p class="value-desc">Foster a compassionate, sustainable model of community living that others can study,
+          adapt, and build — proving that vegan values and rural sanctuary can thrive together.</p>
+      </div>
+      <div class="value-item reveal reveal-d2">
+        <span class="value-glyph">II</span>
+        <div class="value-name">Haven for Changemakers</div>
+        <p class="value-desc">Serve as a refuge for leaders in animal rights and plant-based innovation — a place to
+          restore, connect, and return to the work with renewed clarity.</p>
+      </div>
+      <div class="value-item reveal reveal-d3">
+        <span class="value-glyph">III</span>
+        <div class="value-name">Public Education</div>
+        <p class="value-desc">Educate visitors about ethical animal care and the power of veganism — turning every
+          workshop, tour, and meal into an invitation to live more compassionately.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="connect">
+    <span class="eyebrow reveal">Connect</span>
+    <h2 class="cta-title reveal"><em>Help us build</em> a refuge for people, animals, and the movement</h2>
+    <p class="cta-body reveal">
+      ABC is in its founding chapter — land feasibility, core design, and the first members who will shape sanctuary
+      care, community rhythm, and programming. If this vision aligns with yours, we would love to hear from you.
+    </p>
+    <div class="cta-btns reveal">
+      <a href="mailto:frazer@unitedvisions.org?subject=All%20Beautiful%20Creatures%20(ABC)" class="btn-forest">Get in
+        Touch</a>
+      <a href="index.html" class="btn-outline">United Visions Communities</a>
+    </div>
+  </section>
+
+  <footer>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#pillars">Elements</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#connect">Connect</a></li>
+      <li><a href="index.html">United Visions</a></li>
+    </ul>
+    <p class="footer-logo">All Beautiful Creatures (ABC)</p>
+    <p class="footer-sub">Compassionate Community · Bay Area Region</p>
+  </footer>
+
+  <div class="zen-switch" id="zenSwitch">
+    <button class="zen-switch-toggle" id="zenToggle" aria-haspopup="true" aria-expanded="false">
+      <span class="zen-switch-dot"></span>
+      <span>
+        <span class="zen-switch-label">View</span><br>
+        <span class="zen-switch-current" id="zenCurrent">Sanctuary</span>
+      </span>
+    </button>
+    <div class="zen-switch-panel" id="zenPanel" role="menu">
+      <p class="zen-switch-head">Select a design<span>Same content — many skins.</span></p>
+      <ul>
+        <li>
+          <button class="zen-opt" data-theme="sanctuary" data-name="Sanctuary" style="--swatch:#5d9478" role="menuitem">
+            <span class="zen-opt-name">Sanctuary</span>
+            <span class="zen-opt-desc">Sage &amp; clay · ABC default</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="forest" data-name="Forest" style="--swatch:#3d7a58" role="menuitem">
+            <span class="zen-opt-name">Forest</span>
+            <span class="zen-opt-desc">Earthy serif · warm greens</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="noir" data-name="Noir" style="--swatch:#000" role="menuitem">
+            <span class="zen-opt-name">Noir</span>
+            <span class="zen-opt-desc">Brutalist · black &amp; white</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="press" data-name="Press" style="--swatch:#b8472f" role="menuitem">
+            <span class="zen-opt-name">Press</span>
+            <span class="zen-opt-desc">Editorial · newspaper</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="aurora" data-name="Aurora" style="--swatch:#8b5cf6" role="menuitem">
+            <span class="zen-opt-name">Aurora</span>
+            <span class="zen-opt-desc">Neon · glassy dark</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="bauhaus" data-name="Bauhaus" style="--swatch:#e63946" role="menuitem">
+            <span class="zen-opt-name">Bauhaus</span>
+            <span class="zen-opt-desc">Geometric · primary blocks</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+        if (!isOpen) card.classList.add('open');
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    (function () {
+      const KEY = 'uv-zen-view-abc';
+      const themeLink = document.getElementById('zen-theme');
+      const sw = document.getElementById('zenSwitch');
+      const toggle = document.getElementById('zenToggle');
+      const current = document.getElementById('zenCurrent');
+      const opts = Array.from(document.querySelectorAll('.zen-opt'));
+
+      function apply(theme, name) {
+        themeLink.href = 'views/' + theme + '.css';
+        current.textContent = name;
+        opts.forEach(o => o.classList.toggle('active', o.dataset.theme === theme));
+        try { localStorage.setItem(KEY, theme); } catch (e) { }
+      }
+
+      opts.forEach(o => {
+        o.addEventListener('click', () => {
+          apply(o.dataset.theme, o.dataset.name);
+          sw.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = sw.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!sw.contains(e.target)) {
+          sw.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      let saved = 'sanctuary';
+      try { saved = localStorage.getItem(KEY) || 'sanctuary'; } catch (e) { }
+      const savedOpt = opts.find(o => o.dataset.theme === saved) || opts[0];
+      apply(savedOpt.dataset.theme, savedOpt.dataset.name);
+    })();
+  </script>
+
+</body>
+
+</html>
