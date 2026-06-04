@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>United Visions Communities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --forest-deep:   #0d211a;
+      --forest:        #14302500;
+      --forest-rich:   #1a3d2b;
+      --forest-mid:    #2a5c40;
+      --forest-light:  #3d7a58;
+      --amber:         #c07c20;
+      --amber-warm:    #d4943a;
+      --amber-glow:    #edb96a;
+      --cream:         #f6f0e6;
+      --cream-warm:    #ede5d2;
+      --parchment:     #d9cebc;
+      --parchment-mid: #c9bca8;
+      --text-ink:      #180f06;
+      --text-dark:     #2b1d0f;
+      --text-mid:      #4a3520;
+      --text-muted:    #7a6248;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
+      transition: background 0.4s ease, padding 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(13, 33, 26, 0.94);
+      backdrop-filter: blur(12px);
+      padding: 1rem 3rem;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(246, 240, 230, 0.6);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--amber-glow); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      background: var(--forest-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Layered atmospheric background */
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      will-change: transform;
+    }
+
+    .orb-1 {
+      width: 70vw; height: 70vw;
+      max-width: 700px; max-height: 700px;
+      background: radial-gradient(circle at 40% 40%, rgba(42,92,64,0.55), transparent 65%);
+      top: -15%; left: -15%;
+      animation: floatA 28s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 50vw; height: 50vw;
+      max-width: 500px; max-height: 500px;
+      background: radial-gradient(circle, rgba(192,124,32,0.25), transparent 65%);
+      bottom: -10%; right: -5%;
+      animation: floatB 22s ease-in-out infinite;
+    }
+
+    .orb-3 {
+      width: 40vw; height: 40vw;
+      max-width: 400px; max-height: 400px;
+      background: radial-gradient(circle, rgba(26,61,43,0.4), transparent 65%);
+      top: 30%; left: 55%;
+      animation: floatC 34s ease-in-out infinite;
+    }
+
+    @keyframes floatA {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      40%       { transform: translate(40px,-30px) scale(1.06); }
+      70%       { transform: translate(-20px, 25px) scale(0.96); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      35%       { transform: translate(-30px, 20px) scale(1.04); }
+      65%       { transform: translate(25px,-15px) scale(0.97); }
+    }
+    @keyframes floatC {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%       { transform: translate(-40px, 30px) scale(1.08); }
+    }
+
+    /* Fine grain overlay */
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    /* Thin horizontal rule */
+    .hero-rule {
+      position: absolute;
+      top: 50%;
+      left: 8%; right: 8%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(237,185,106,0.12), transparent);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 2rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--amber-warm);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: riseIn 1s ease-out 0.2s forwards;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--amber-warm);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 300;
+      line-height: 0.95;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: riseIn 1.2s ease-out 0.45s forwards;
+    }
+
+    .hero-title .line-italic {
+      display: block;
+      font-style: italic;
+      color: var(--amber-glow);
+      font-weight: 300;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(246, 240, 230, 0.62);
+      max-width: 560px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      animation: riseIn 1s ease-out 0.7s forwards;
+    }
+
+    .hero-cta-wrap {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: riseIn 1s ease-out 0.9s forwards;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      border: 1px solid rgba(237,185,106,0.45);
+      color: var(--amber-glow);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(237,185,106,0.12);
+      border-color: var(--amber-glow);
+    }
+
+    .btn-solid {
+      display: inline-block;
+      padding: 0.9rem 2.4rem;
+      background: var(--forest-mid);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-solid:hover { background: var(--forest-light); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      z-index: 10;
+      opacity: 0;
+      animation: riseIn 1s ease-out 1.3s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,0.3);
+    }
+
+    .scroll-stem {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(237,185,106,0.5), transparent);
+      animation: stemPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes stemPulse {
+      0%, 100% { opacity: 0.5; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(0.7); }
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── INTRO ───────────────────────────────────────── */
+    .intro {
+      background: var(--cream);
+      padding: 8rem 2rem 6rem;
+    }
+
+    .intro-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-mid);
+    }
+
+    .intro-body strong {
+      font-weight: 500;
+      color: var(--text-ink);
+    }
+
+    .intro-divider {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--parchment-mid), transparent);
+      margin: 3.5rem auto 0;
+    }
+
+    /* ─── PILLARS ─────────────────────────────────────── */
+    .pillars {
+      background: var(--cream-warm);
+      padding: 6rem 2rem 8rem;
+      position: relative;
+    }
+
+    .pillars::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--parchment-mid), transparent);
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: var(--text-ink);
+      line-height: 1.2;
+      margin-top: 0.75rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Card */
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--parchment);
+      cursor: pointer;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--forest-light), var(--amber-warm));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card:hover .card-accent,
+    .card.open .card-accent { transform: scaleX(1); }
+
+    .card:hover {
+      border-color: rgba(61,122,88,0.4);
+      box-shadow: 0 6px 32px rgba(26,53,39,0.07);
+    }
+
+    .card.open {
+      border-color: rgba(42,92,64,0.5);
+      box-shadow: 0 8px 40px rgba(26,53,39,0.1);
+    }
+
+    .card-head {
+      padding: 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      user-select: none;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--cream-warm);
+      border: 1px solid var(--parchment);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .card:hover .card-icon,
+    .card.open .card-icon {
+      background: rgba(26,61,43,0.06);
+      border-color: rgba(61,122,88,0.3);
+    }
+
+    .card-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s;
+    }
+
+    .card:hover .card-icon svg,
+    .card.open .card-icon svg { stroke: var(--forest-mid); }
+
+    .card-meta { flex: 1; min-width: 0; }
+
+    .card-num {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--text-ink);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-teaser {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card-toggle {
+      width: 26px; height: 26px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      margin-top: 2px;
+    }
+
+    .card:hover .card-toggle { border-color: var(--forest-light); color: var(--forest-mid); }
+
+    .card.open .card-toggle {
+      background: var(--forest-rich);
+      border-color: var(--forest-rich);
+      color: var(--cream);
+      transform: rotate(45deg);
+    }
+
+    .card-toggle svg {
+      width: 10px; height: 10px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+    }
+
+    /* Expand body */
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .card.open .card-body { max-height: 700px; }
+
+    .card-body-inner {
+      padding: 1.5rem 1.75rem 1.75rem;
+      border-top: 1px solid var(--parchment);
+    }
+
+    .card-pullquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--forest-mid);
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--amber-warm);
+    }
+
+    .card-body-inner p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 0.8rem;
+    }
+
+    .card-body-inner p:last-child { margin-bottom: 0; }
+
+    /* ─── VISION QUOTE ────────────────────────────────── */
+    .vision {
+      background: var(--forest-rich);
+      padding: 9rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-bg-mark {
+      position: absolute;
+      top: -0.25em;
+      left: -0.05em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.025);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .vision-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    .vision-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(42,92,64,0.4), transparent);
+      top: -100px; right: -100px;
+    }
+
+    .vision-orb-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(192,124,32,0.2), transparent);
+      bottom: -50px; left: 10%;
+    }
+
+    .vision-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .vision .eyebrow { color: var(--amber-warm); }
+
+    .vision-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.15rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(246,240,230,0.88);
+      margin: 1.5rem 0 2rem;
+    }
+
+    .vision-quote strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--amber-glow);
+    }
+
+    .vision-bar {
+      width: 48px; height: 1px;
+      background: rgba(237,185,106,0.5);
+      margin: 0 auto 1.5rem;
+    }
+
+    .vision-attr {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,0.35);
+    }
+
+    /* ─── VALUES STRIP ────────────────────────────────── */
+    .values {
+      background: var(--cream);
+      padding: 7rem 2rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .values-inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .value-item { text-align: center; }
+
+    .value-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--parchment);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .value-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--text-ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .value-desc {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ─── CTA ─────────────────────────────────────────── */
+    .cta {
+      background: var(--cream-warm);
+      padding: 9rem 2rem;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      color: var(--text-ink);
+      line-height: 1.15;
+      max-width: 640px;
+      margin: 1rem auto 1.75rem;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--forest-mid);
+    }
+
+    .cta-body {
+      font-size: 0.93rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.85;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-forest {
+      display: inline-block;
+      padding: 1rem 2.6rem;
+      background: var(--forest-rich);
+      color: var(--cream);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-forest:hover { background: var(--forest-mid); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 1rem 2.6rem;
+      border: 1px solid var(--parchment-mid);
+      color: var(--text-mid);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--forest-mid);
+      color: var(--forest-mid);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--forest-deep);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: rgba(246,240,230,0.75);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,0.2);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,0.3);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--amber-warm); }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 760px) {
+      nav { padding: 1.25rem 1.5rem; }
+      nav.scrolled { padding: 0.875rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .grid { grid-template-columns: 1fr; }
+
+      .values-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .intro { padding: 5rem 1.5rem 4rem; }
+      .pillars { padding: 5rem 1.5rem 6rem; }
+      .vision { padding: 6rem 1.5rem; }
+      .cta { padding: 6rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#top" class="nav-logo">United Visions</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-canvas">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-grain"></div>
+    <div class="hero-rule"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">An Intentional Community</p>
+      <h1 class="hero-title">
+        United
+        <span class="line-italic">Visions</span>
+      </h1>
+      <p class="hero-tagline">
+        A community where every person, every meal, every act of creation is oriented toward the deepest flourishing of each other — and the world.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="#pillars" class="btn-ghost">Explore the Vision</a>
+        <a href="#connect" class="btn-solid">Get Involved</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-stem"></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="about">
+    <div class="intro-inner reveal">
+      <span class="eyebrow">The Dream</span>
+      <p class="intro-body">
+        Imagine <strong>hundreds of people living and building together</strong> — connected by archways and gardens, sharing meals, sharing creativity, sharing a commitment to transform their minds, their relationships, and the world.
+        This is not a retreat. <strong>This is how we want to live.</strong>
+      </p>
+      <div class="intro-divider"></div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars" id="pillars">
+    <div class="section-head reveal">
+      <span class="eyebrow">Six Pillars</span>
+      <h2 class="section-title">The Foundations of Our Way of Life</h2>
+    </div>
+
+    <div class="grid">
+
+      <!-- 1 – Mindful Living -->
+      <div class="card reveal reveal-d1">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Bell -->
+            <svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              <line x1="12" y1="2" x2="12" y2="5"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">01</div>
+            <h3 class="card-title">Mindful Living</h3>
+            <p class="card-teaser">Morning meditations, community bells, and collective mental rehearsal to start every day with intention.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"The whole community comes in excited to level up their mind."</p>
+            <p>Each day begins with a shared meditation — not a quiet, solitary act, but a collective experience with epic bells, dramatic lighting, and the energy of hundreds of people orienting themselves toward their highest potential.</p>
+            <p>Compassion meditation is a daily practice. You move through the community and feel genuinely loved, cared for, and supported — not by chance, but because everyone has cultivated that quality of presence together.</p>
+            <p>Mental rehearsal and positive visualization are woven into everyday rhythms. We rehearse who we want to be, not just what we want to accomplish.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 – Communal Connection -->
+      <div class="card reveal reveal-d2">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Users -->
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">02</div>
+            <h3 class="card-title">Communal Connection</h3>
+            <p class="card-teaser">Shared meals, cooperative living, and loving relationships — the simple infrastructure of belonging.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"You're on the roster once every couple of weeks — you make something great, share it with everybody, and every other meal is shared with you."</p>
+            <p>Communal living radically simplifies the logistics of daily life. Freed from cooking three meals a day alone, you have energy and attention for what matters most. The shared kitchen becomes a place of creativity and generosity.</p>
+            <p>Beautiful architecture with archways and hanging gardens connects building to building. The physical environment is intentionally designed so chance encounters are beautiful, and solitude is always available when needed.</p>
+            <p>Gyms, sports grounds, a movie theater — the amenities of a rich life, shared rather than individually owned. Community is not a compromise. It's an upgrade.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 – Creative Culture -->
+      <div class="card reveal reveal-d3">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Sparkle / Star -->
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">03</div>
+            <h3 class="card-title">Creative Culture</h3>
+            <p class="card-teaser">Fashion lines, VR worlds, films, books, podcasts — and the legendary "Masaya Jams" where creativity meets enlightenment.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Imagine you spending some time just role-playing being as expressive and as enlightening as you can."</p>
+            <p>Masaya Jams are live community sessions where cameras roll and everyone is encouraged to inhabit the kindest, most awesome, wildest version of themselves — like theater games, but the goal is enlightenment. The output is something worth sharing with the world.</p>
+            <p>The community actively creates: fashion lines where the imagery makes people feel love for all beings; VR worlds built collaboratively in an afternoon; films, TV shows, books, and podcasts carrying a clear intention toward human flourishing.</p>
+            <p>Music, art, and the words in our spaces are chosen intentionally. Lyrics that lift. Visuals that inspire. The culture we make together can be exported everywhere.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 – Ethics & Impact -->
+      <div class="card reveal reveal-d4">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Shield check -->
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">04</div>
+            <h3 class="card-title">Ethics & Impact</h3>
+            <p class="card-teaser">Ethical consumption, environmental care, and a shared commitment to not causing harm — in every purchase, every choice.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"We don't buy stuff from places where anyone was hurt — and we're kind to the environment."</p>
+            <p>Ethics isn't a policy here — it's a shared value running through every decision. Where we source food. What we build with. How we engage the wider world. The community has agreed that its positive intention extends not just to each other, but to all living beings.</p>
+            <p>Every member is excited not just to help one another, but to have a positive impact beyond these walls. We want everything we make, buy, eat, and create to be a net positive in the world.</p>
+            <p>This is not austerity. Ethical living is joyful, beautiful, and abundant. It simply requires intention — and a community committed to holding each other to it, with kindness.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 – Education & Growth -->
+      <div class="card reveal reveal-d5">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Book open -->
+            <svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">05</div>
+            <h3 class="card-title">Education & Growth</h3>
+            <p class="card-teaser">Schools where children learn mindfulness and confidence — not just academic preparation.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"A culture where people are actively helping everyone's mind be awesome is a very different culture."</p>
+            <p>Our schools teach mindfulness, kindness, emotional confidence, and how to handle different scenarios with grace. Children mentally rehearse being their best selves — the same practice the adults use, taught from the very beginning.</p>
+            <p>Consider the difference: in a school where no one teaches mental rehearsal, some children will naturally develop it and others will rehearse failure. We choose to deliberately bring every mind toward its highest potential.</p>
+            <p>This extends beyond school: workplaces where teams practice positive visualization together, where friendships are loving and genuinely supportive. The whole environment is designed for flourishing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 – World Outreach -->
+      <div class="card reveal reveal-d6">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <!-- Globe -->
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">06</div>
+            <h3 class="card-title">World Outreach</h3>
+            <p class="card-teaser">Welcoming visitors, inspiring world leaders, and sharing the culture we've built with everyone ready to receive it.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"How do we inspire filmmakers, sports stars, and world leaders to come practice meditation with us — and feel what it's like to envision a world where everybody cares?"</p>
+            <p>United Visions is not a refuge from the world — it's a laboratory for it. Visitors come to experience the architecture, the food, the gardens, the art, and the rare feeling of being in a community truly oriented toward human flourishing.</p>
+            <p>We actively look for ways to share what works. Creative culture, spiritual practices, ethical frameworks — the Masaya Jams are streamed, the films are released, the books are published.</p>
+            <p>We encourage everyone to find or create their own intentional communities: to explore what resonates, practice their dreams, and discover that society itself becomes your commune when you approach it with real intention.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VISION QUOTE -->
+  <section class="vision" id="vision">
+    <div class="vision-bg-mark" aria-hidden="true">&ldquo;</div>
+    <div class="vision-orb vision-orb-1"></div>
+    <div class="vision-orb vision-orb-2"></div>
+    <div class="vision-inner reveal">
+      <span class="eyebrow">The Vision</span>
+      <blockquote class="vision-quote">
+        "I want to live in a community where everybody values how amazing it is that we can <strong>transform our minds</strong> and our feelings — and that we're all practicing, each day, together. Where our positive intention is not just for each other, but <strong>for the world</strong>."
+      </blockquote>
+      <div class="vision-bar"></div>
+      <p class="vision-attr">Frazer Kirkman &mdash; United Visions Communities</p>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="values-inner">
+      <div class="value-item reveal reveal-d1">
+        <span class="value-glyph">I</span>
+        <div class="value-name">Presence</div>
+        <p class="value-desc">Your attention is your most precious resource. What you put it into decides the direction of your life — and collectively, the direction of the world.</p>
+      </div>
+      <div class="value-item reveal reveal-d2">
+        <span class="value-glyph">II</span>
+        <div class="value-name">Intention</div>
+        <p class="value-desc">Every meal, every creative act, every conversation is an opportunity to ask: what is the best possible impact I can have in this moment?</p>
+      </div>
+      <div class="value-item reveal reveal-d3">
+        <span class="value-glyph">III</span>
+        <div class="value-name">Connection</div>
+        <p class="value-desc">Help people find their team. Help them follow their dreams. Share the stuff that's awesome. The whole world is one community working together.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="connect">
+    <span class="eyebrow reveal">Join the Vision</span>
+    <h2 class="cta-title reveal"><em>What would you do</em> if everything in your life was exactly as you wanted it to be?</h2>
+    <p class="cta-body reveal">
+      That question is the start of everything. United Visions Communities begins with imagining the life you most want to live — then finding others who want to build it with you.
+    </p>
+    <div class="cta-btns reveal">
+      <a href="mailto:frazer@unitedvisions.community" class="btn-forest">Reach Out to Frazer</a>
+      <a href="https://www.ic.org" target="_blank" rel="noopener noreferrer" class="btn-outline">Find a Community Near You</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <p class="footer-logo">United Visions Communities</p>
+    <p class="footer-sub">A vision by Frazer Kirkman</p>
+  </footer>
+
+  <script>
+    // ── Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Card expand / collapse
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+        if (!isOpen) card.classList.add('open');
+      });
+    });
+
+    // ── Scroll-reveal via IntersectionObserver
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ── Smooth scroll for in-page anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
