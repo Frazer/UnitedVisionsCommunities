@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Full Vision — United Visions Communities</title>
+  <meta name="description"
+    content="Extended vision from Frazer Kirkman's intentional community talk — everything on the main page plus the rest of the transcript.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Grotesk:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Archivo+Black&family=Libre+Franklin:wght@300;400;600;800&family=JetBrains+Mono:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+  <link id="zen-theme" rel="stylesheet" href="views/forest.css">
+
+  <style>
+    .zen-switch {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 9999;
+      font-family: 'DM Sans', system-ui, sans-serif;
+    }
+
+    .zen-switch * { box-sizing: border-box; }
+
+    .zen-switch-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.7rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(18, 18, 22, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .zen-switch-toggle:hover {
+      transform: translateY(-2px);
+      background: rgba(28, 28, 34, 0.92);
+    }
+
+    .zen-switch-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .zen-switch-current { font-size: 0.82rem; font-weight: 500; }
+
+    .zen-switch-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #edb96a, #3d7a58);
+      box-shadow: 0 0 10px rgba(237, 185, 106, 0.8);
+    }
+
+    .zen-switch-panel {
+      position: absolute;
+      right: 0;
+      bottom: calc(100% + 0.75rem);
+      width: 290px;
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      background: rgba(18, 18, 22, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.98);
+      transform-origin: bottom right;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+    }
+
+    .zen-switch.open .zen-switch-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .zen-switch-head {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      padding: 0.4rem 0.6rem 0.7rem;
+    }
+
+    .zen-switch-head span {
+      display: block;
+      margin-top: 0.25rem;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .zen-switch-panel ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .zen-opt {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
+      padding: 0.65rem 0.7rem;
+      border: none;
+      border-radius: 10px;
+      background: transparent;
+      color: #fff;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+
+    .zen-opt:hover { background: rgba(255, 255, 255, 0.08); }
+    .zen-opt.active { background: rgba(255, 255, 255, 0.12); }
+
+    .zen-opt-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .zen-opt-name::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--swatch, #888);
+      flex-shrink: 0;
+    }
+
+    .zen-opt.active .zen-opt-name::after {
+      content: '✓';
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .zen-opt-desc {
+      font-size: 0.68rem;
+      color: rgba(255, 255, 255, 0.42);
+      padding-left: 1.2rem;
+    }
+
+    @media (max-width: 760px) {
+      .zen-switch-panel { width: min(290px, calc(100vw - 2.5rem)); }
+    }
+
+    .intro-body-follow { margin-top: 1.5rem; }
+    .card-body-inner ul {
+      margin: 0.5rem 0 0.9rem 1.1rem;
+      padding: 0;
+    }
+    .card-body-inner li {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-mid, #4a3520);
+      margin-bottom: 0.45rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav id="nav">
+    <a href="#top" class="nav-logo">United Visions</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Sections</a></li>
+      <li><a href="#vision">Source</a></li>
+      <li><a href="#connect">Links</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-canvas">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-grain"></div>
+    <div class="hero-rule"></div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Extended Vision</p>
+      <h1 class="hero-title">
+        The Full
+        <span class="line-italic">Picture</span>
+      </h1>
+      <p class="hero-tagline">
+        Everything from Frazer's intentional-community talk that didn't fit on the main page — the extra details,
+        stories, invitations, and wisdom shared in the session.
+      </p>
+      <div class="hero-cta-wrap">
+        <a href="#pillars" class="btn-ghost">Read the Sections</a>
+        <a href="index.html" class="btn-solid">Main Page</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-stem"></div>
+    </div>
+  </section>
+
+  <section class="intro" id="about">
+    <div class="intro-inner reveal">
+      <span class="eyebrow">About This Page</span>
+      <p class="intro-body">
+        The <a href="index.html" style="color: inherit; text-decoration: underline;">main United Visions page</a> is a
+        curated summary. This page holds the <strong>rest of the transcript</strong> — spoken in a live session — so
+        nothing important is lost.
+      </p>
+      <p class="intro-body intro-body-follow">
+        Click any section below to expand. Wording stays close to what was said; filler and side conversation are
+        trimmed, but the ideas are preserved.
+      </p>
+      <div class="intro-divider"></div>
+    </div>
+  </section>
+
+  <section class="pillars" id="pillars">
+    <div class="section-head reveal">
+      <span class="eyebrow">From the Transcript</span>
+      <h2 class="section-title">What the Main Page Leaves Out</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card reveal reveal-d1">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">01</div>
+            <h3 class="card-title">Place, Nature &amp; Architecture</h3>
+            <p class="card-teaser">In touch with nature, archways with hanging barriers, shared gyms and a movie
+              theater — a peaceful, blissful physical home.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>A beautiful place <strong>in touch with nature</strong> — not only gardens, but land and living systems
+              felt in daily life.</p>
+            <p><strong>Archways with barriers hanging down</strong> as you walk from building to building — a soft,
+              intimate way of moving through the community (the main page says "hanging gardens"; the transcript
+              describes barriers hanging down).</p>
+            <p>Shared amenities: <strong>gyms, sports grounds, and a movie theater</strong> — richness of life without
+              everyone owning everything separately.</p>
+            <p>Visitors should experience a <strong>peaceful, blissful place</strong> made beautiful through architecture,
+              fresh healthy food, flowers, and art — not only ideas, but a felt physical experience.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d2">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">02</div>
+            <h3 class="card-title">Creative Culture — Extended</h3>
+            <p class="card-teaser">Video games, live-streamed Masaya Jams, fashion that teaches truth — and warming up
+              into your most expressive self.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Actively aiming to succeed at creating: fashion lines, <strong>video games</strong>, TV shows and movies,
+              writing books, and podcasts — culture meant to be exported.</p>
+            <p><strong>Masaya Jams</strong> with <strong>live-streaming cameras</strong> on — everyone encouraged to
+              role-play the kindest, most awesome, wildest version of themselves, like theater games oriented toward
+              enlightenment.</p>
+            <p class="card-pullquote">"The kinds of things that would come out of you as you warm up will be awesome."</p>
+            <p>Not only words: someone might suddenly propose a <strong>VR world</strong> and a group builds it in an
+              afternoon.</p>
+            <p>A fashion line where imagery helps people feel <strong>love for all beings</strong> — or teaches something
+              about <strong>rationality, questioning, and truth</strong>.</p>
+            <p>Times when creativity is allowed to <strong>inspire and uplift</strong> the whole community — and that
+              becomes normal culture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d3">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">03</div>
+            <h3 class="card-title">Schools, Food &amp; Daily Culture</h3>
+            <p class="card-teaser">Kids play sport and visualize being awesome; delicious food; community events;
+              uplifting lyrics and art everywhere.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Schools where kids learn mindfulness and kindness, rehearse confidence and handling scenarios — and
+              <strong>go play sport</strong> while <strong>everybody visualizes being awesome</strong>.</p>
+            <p>Contrast with schools where only some kids rehearse success while others <strong>mentally rehearse being
+                terrible</strong> — a culture actively helping everyone's mind be awesome is a very different culture.
+            </p>
+            <p>Workplaces and teams that practice the same orientation; fashion and music where <strong>everybody cares
+                about positive impact</strong>.</p>
+            <ul>
+              <li>Lyrics and words that leave everyone feeling lifted up</li>
+              <li>Art around the community that is intentionally inspiring</li>
+              <li><strong>Food that is delicious and healthy</strong></li>
+              <li>Loving, supportive friendships and relationships</li>
+              <li><strong>Community events</strong> — everyone encouraged to think about and create them</li>
+            </ul>
+            <p>An <strong>enriching, uplifting society</strong> — and encouragement for <strong>every intentional
+                community</strong> to share what they do so more people can find communities that uplift them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d4">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">04</div>
+            <h3 class="card-title">Ethics — As Spoken</h3>
+            <p class="card-teaser">Don't buy from slavery or harm; kindness to animals and the environment — stated in
+              the raw terms of the talk.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>A really ethical community: when buying things, <strong>don't buy stuff from slaves</strong> or places
+              where anyone was hurt — and where <strong>any animals were harmed</strong> — and be <strong>kind to the
+                environment</strong>.</p>
+            <p>People excited not only to help each other but to have a <strong>positive impact on the world</strong> —
+              so creative culture built together is something we can export with integrity.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d5">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">05</div>
+            <h3 class="card-title">Finding &amp; Growing Community</h3>
+            <p class="card-teaser">VR Chat, events and businesses together, exploring ic.org, practicing dreams — and
+              inviting Frazer into aligned spaces.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p><strong>"Where does that exist?"</strong> — maybe more events in VR Chat; also living with
+              <strong>events and businesses together</strong>.</p>
+            <p><strong>Please invite me</strong> to more events and groups that line up with this vision. Likewise, if you
+              know intentional communities or companies that align, let Frazer know — and be a resource: help people
+              follow their dreams and find their team.</p>
+            <p>In VR you can see someone's groups; in the wider world it's often luck whether you discover something
+              awesome. Want <strong>more ways in our culture to share the stuff that's awesome</strong> — many friends
+              invited across communities to create overlap.</p>
+            <p><strong>Putting positivity out there wherever you can</strong> is a wonderful quality.</p>
+            <p>Your intentional community might be a meditation group or friends who party together positively —
+              whatever you're imagining, Frazer wanted to hear it.</p>
+            <p>Explore via <a href="https://www.ic.org" target="_blank" rel="noopener noreferrer">intentionalcommunities.org</a>
+              (ic.org) — visit local meditation communities, dance clubs, or communities worldwide.</p>
+            <p><strong>Practice your dreams</strong> — visiting real places shows whether your hopes feel good in
+              practice; visions change when tested.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d6">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">06</div>
+            <h3 class="card-title">Frazer's Journey &amp; Evolving Vision</h3>
+            <p class="card-teaser">Permaculture in Australia, preferring the city, society as commune — and using
+              Twitter/art to make the vision visible.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Ran a <strong>permaculture community in Australia</strong> — lots of garden time — and realized: doesn't
+              want to be a farmer; prefers <strong>living close to a city</strong>. Gardening can be done by people who
+              love it; Frazer wants to interact with lots of people.</p>
+            <p>Younger dreams of complete self-sustaining communes matter less now. Cares more about <strong>society
+                being environmentally friendly</strong> and <strong>feeling more connected</strong>.</p>
+            <p>Might live on a farm if the community were meditative and enlightening enough, retreats were great, and
+              impact was wonderful — but broadly wants <strong>intentional communities everywhere</strong>, people
+              exploring, creating, moving, and connecting with ideal people.</p>
+            <p>Doesn't tweet much; handle is <strong>@Frazer Kirkman</strong> (name). This session was meant as a
+              <strong>kickoff to write it down, tweet about it, and create art</strong> so people can see what he sees.
+            </p>
+            <p>Mentioned communities in conversation: e.g. <strong>Penguins Meadow Farm</strong> (Mendocino), California
+              as a good region, and interest in the <strong>Helping Hands</strong> community (including sign language).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d1">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">07</div>
+            <h3 class="card-title">Attention &amp; Beliefs</h3>
+            <p class="card-teaser">Time is precious; belief systems can be refined — including learning to speak openly
+              and clearly.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p class="card-pullquote">"Our time is precious."</p>
+            <p>Limited minutes, limited space for thoughts and conversations. The universe heads in a direction shaped
+              by <strong>what you put your attention on</strong> — that decides who you hang out with, how you feel, how
+              you see things; collectively, that shapes the world.</p>
+            <p>Embrace how precious attention is: what you put time into, what feelings you feed, what ideas you
+              contemplate and grow — for yourself and others. Find skillful navigation; refine belief systems that help,
+              transform those that hurt.</p>
+            <p>Imagine what's best, then create the mindset and perspective that brings more of it — how you want to
+              feel, interact, and how easy or empowered you want your mind to be.</p>
+            <p>Grew up where <strong>talking openly</strong> about even slightly confronting things was nearly impossible
+              — communication and understanding suffered. Confronted that belief; imagined a world where saying what you
+              mean is easy — and found everything improved. Invites us to reflect on beliefs we think are true and refine
+              them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d2">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">08</div>
+            <h3 class="card-title">Music, Meditation &amp; Expression</h3>
+            <p class="card-teaser">Immersive piano vs intentional practice; music's power; recording, art, dance, and
+              guiding meditations.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Immersive activity (e.g. piano) isn't automatically meditation — <strong>intentionality</strong> matters:
+              mindful playing, enriching the music, or compassion flowing through the activity. Music isn't a waste of
+              time; it's a skill that can serve many ends.</p>
+            <p>Music can be powerfully emotive — uplifting or harmful depending on lyrics and impact; some art lifts more
+              people, some harms more. Hope for creators intentionally aiming for the <strong>best possible impact on
+                the most people</strong>. Even difficult material can become a springboard for compassion when met with
+              mindfulness; still, tend toward what lifts more people.</p>
+            <p><strong>Expression tips from the session:</strong></p>
+            <ul>
+              <li>Writing, sticky notes, big posters — or <strong>recording yourself talking</strong> (or Q&amp;A) and
+                transcribing — talking flows for Frazer</li>
+              <li>Art, <strong>dance</strong>, <strong>walking in nature</strong> as contexts that free expression</li>
+              <li><strong>Guiding meditations</strong> — inner state unlocks words and feeling beyond the ordinary</li>
+              <li>Meditating then writing; movement as expression</li>
+            </ul>
+            <p>Meditation as often as possible — walking, talking, loving, learning — choosing mindset amid obstacles.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d3">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">09</div>
+            <h3 class="card-title">The Om Story &amp; United Visions</h3>
+            <p class="card-teaser">Moonlight on a Tibetan mountain — U and V that were really Om — and what that symbol
+              means.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>While staying at a Tibetan Buddhist temple (where United Visions' charity logo — <strong>U and V</strong>
+              — first lived in Frazer's life), he climbed their sacred mountain by moonlight toward a stupa.</p>
+            <p>On a plateau, an engraved stone showed symbols of major religious movements — and at the top,
+              <strong>U and V</strong>. It felt staggering, as if the world had been waiting.</p>
+            <p>By daylight it was the Tibetan <strong>Om</strong> — other marks hidden in moon shadow. Om still carries
+              special meaning: a world where everyone is mindful, choosing what to rehearse, master of body, feelings, and
+              consciousness.</p>
+            <p>Frazer doesn't insist on mysticism but likes how meaning can intensify through what people believe and
+              practice together.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d4">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              <line x1="12" y1="2" x2="12" y2="5" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">10</div>
+            <h3 class="card-title">The Thought Experiment</h3>
+            <p class="card-teaser">If everything were already how you wanted — struggles gone, community supporting you
+              — what would you do now?</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Facilitated in the session (also on the <a href="index.html">main page</a> CTA):</p>
+            <p class="card-pullquote">Imagine you have everything you wanted. Everything works the way you like. Struggles
+              and wasted time are gone. Your community helps you be awesome. What would your awesome life be like?</p>
+            <p>Make it stronger: <strong>What would I choose then? This is me now. I'm becoming my best self right
+                now.</strong> As you start doing more of that, you bring more of that community toward you and make
+              things better and better.</p>
+            <p>Someone in the room impacted Frazer deeply with this framing — the question is offered here in full so it
+              can be sat with slowly, not only as a headline.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal reveal-d5">
+        <div class="card-accent"></div>
+        <div class="card-head">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+            </svg>
+          </div>
+          <div class="card-meta">
+            <div class="card-num">11</div>
+            <h3 class="card-title">Closing the Session</h3>
+            <p class="card-teaser">Gratitude, true nature, social time — and gratitude for everyone who shared.</p>
+          </div>
+          <div class="card-toggle">
+            <svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9" /><line x1="1" y1="5" x2="9" y2="5" /></svg>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">
+            <p>Instead of a full closing meditation, a <strong>contemplation on gratitude</strong> — things from today,
+              reminders felt more powerfully, mindfulness, mental rehearsal, wisdom, practice.</p>
+            <p>Consider using challenges to find something even stronger inside yourself — grateful for anything that
+              comes your way.</p>
+            <p>Springboard from a participant: <strong>"My true nature is nothing but nature."</strong></p>
+            <p>Thank you for time shared; option to socialize or keep meditating after leaving the temple space.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vision" id="vision">
+    <div class="vision-bg-mark" aria-hidden="true">&ldquo;</div>
+    <div class="vision-orb vision-orb-1"></div>
+    <div class="vision-orb vision-orb-2"></div>
+    <div class="vision-inner reveal">
+      <span class="eyebrow">Source</span>
+      <blockquote class="vision-quote">
+        This page is drawn from <strong>Frazer Kirkman's spoken vision</strong> of an intentional community (transcribed
+        session). The <a href="index.html" style="color: inherit; text-decoration: underline;">summary page</a> is the
+        polished front door; <strong>this is the archive</strong> of what else was said.
+      </blockquote>
+      <div class="vision-bar"></div>
+      <p class="vision-attr">United visions intentional community.txt</p>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="values-inner">
+      <div class="value-item reveal reveal-d1">
+        <span class="value-glyph">→</span>
+        <div class="value-name">Main Summary</div>
+        <p class="value-desc"><a href="index.html">index.html</a> — six pillars, vision quote, presence, intention,
+          connection.</p>
+      </div>
+      <div class="value-item reveal reveal-d2">
+        <span class="value-glyph">→</span>
+        <div class="value-name">ABC Project</div>
+        <p class="value-desc"><a href="abc.html">abc.html</a> — All Beautiful Creatures compassionate community (separate
+          project).</p>
+      </div>
+      <div class="value-item reveal reveal-d3">
+        <span class="value-glyph">→</span>
+        <div class="value-name">Explore Communities</div>
+        <p class="value-desc"><a href="https://www.ic.org" target="_blank" rel="noopener noreferrer">ic.org</a> — find
+          intentional communities worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="connect">
+    <span class="eyebrow reveal">Links</span>
+    <h2 class="cta-title reveal">Continue exploring</h2>
+    <p class="cta-body reveal">
+      Read the curated vision, share feedback, or explore communities near you. DM Frazer about aligned groups, visits, or
+      co-creating the dream.
+    </p>
+    <div class="cta-btns reveal">
+      <a href="index.html" class="btn-forest">Main United Visions Page</a>
+      <a href="mailto:frazer@unitedvisions.org?subject=Full%20Vision%20Page" class="btn-outline">Email Frazer</a>
+    </div>
+  </section>
+
+  <footer>
+    <ul class="footer-links">
+      <li><a href="index.html">Summary</a></li>
+      <li><a href="#pillars">Sections</a></li>
+      <li><a href="abc.html">ABC</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <p class="footer-logo">The Full Vision</p>
+    <p class="footer-sub">United Visions Communities · Extended transcript</p>
+  </footer>
+
+  <div class="zen-switch" id="zenSwitch">
+    <button class="zen-switch-toggle" id="zenToggle" aria-haspopup="true" aria-expanded="false">
+      <span class="zen-switch-dot"></span>
+      <span>
+        <span class="zen-switch-label">View</span><br>
+        <span class="zen-switch-current" id="zenCurrent">Forest</span>
+      </span>
+    </button>
+    <div class="zen-switch-panel" id="zenPanel" role="menu">
+      <p class="zen-switch-head">Select a design<span>Same content — many skins.</span></p>
+      <ul>
+        <li>
+          <button class="zen-opt" data-theme="forest" data-name="Forest" style="--swatch:#3d7a58" role="menuitem">
+            <span class="zen-opt-name">Forest</span>
+            <span class="zen-opt-desc">Earthy serif · default</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="sanctuary" data-name="Sanctuary" style="--swatch:#5d9478" role="menuitem">
+            <span class="zen-opt-name">Sanctuary</span>
+            <span class="zen-opt-desc">Sage &amp; clay</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="noir" data-name="Noir" style="--swatch:#000" role="menuitem">
+            <span class="zen-opt-name">Noir</span>
+            <span class="zen-opt-desc">Brutalist</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="press" data-name="Press" style="--swatch:#b8472f" role="menuitem">
+            <span class="zen-opt-name">Press</span>
+            <span class="zen-opt-desc">Editorial</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="aurora" data-name="Aurora" style="--swatch:#8b5cf6" role="menuitem">
+            <span class="zen-opt-name">Aurora</span>
+            <span class="zen-opt-desc">Neon cyber</span>
+          </button>
+        </li>
+        <li>
+          <button class="zen-opt" data-theme="bauhaus" data-name="Bauhaus" style="--swatch:#e63946" role="menuitem">
+            <span class="zen-opt-name">Bauhaus</span>
+            <span class="zen-opt-desc">Geometric</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+        if (!isOpen) card.classList.add('open');
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    (function () {
+      const KEY = 'uv-zen-view-full';
+      const themeLink = document.getElementById('zen-theme');
+      const sw = document.getElementById('zenSwitch');
+      const toggle = document.getElementById('zenToggle');
+      const current = document.getElementById('zenCurrent');
+      const opts = Array.from(document.querySelectorAll('.zen-opt'));
+
+      function apply(theme, name) {
+        themeLink.href = 'views/' + theme + '.css';
+        current.textContent = name;
+        opts.forEach(o => o.classList.toggle('active', o.dataset.theme === theme));
+        try { localStorage.setItem(KEY, theme); } catch (e) { }
+      }
+
+      opts.forEach(o => {
+        o.addEventListener('click', () => {
+          apply(o.dataset.theme, o.dataset.name);
+          sw.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = sw.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!sw.contains(e.target)) {
+          sw.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      let saved = 'forest';
+      try { saved = localStorage.getItem(KEY) || 'forest'; } catch (e) { }
+      const savedOpt = opts.find(o => o.dataset.theme === saved) || opts[0];
+      apply(savedOpt.dataset.theme, savedOpt.dataset.name);
+    })();
+  </script>
+
+</body>
+
+</html>

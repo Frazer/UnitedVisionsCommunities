@@ -184,6 +184,343 @@
     .intro-body-follow {
       margin-top: 1.75rem;
     }
+
+    .card-body-inner a {
+      color: var(--forest-mid, #3d6b56);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 0.15em;
+    }
+
+    .card-body-inner a:hover {
+      color: var(--forest-rich, #2a4538);
+    }
+
+    /* Hero background */
+    .hero.hero--imaged {
+      background: var(--forest-deep, #1a2820);
+    }
+
+    .hero.hero--imaged .hero-canvas,
+    .hero.hero--imaged .hero-grain,
+    .hero.hero--imaged .hero-rule,
+    .hero.hero--imaged .orb {
+      display: none;
+    }
+
+    .hero-bg-photo {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(26, 40, 32, 0.38) 0%, rgba(26, 40, 32, 0.68) 55%, rgba(26, 40, 32, 0.9) 100%),
+        url('images/geodesic-visionary-community.png') center 35% / cover no-repeat;
+      pointer-events: none;
+    }
+
+    /* Featured dome imagery */
+    .dome-showcase {
+      background: var(--cream-warm, #ede5d2);
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--parchment, #d9cebc);
+      border-bottom: 1px solid var(--parchment, #d9cebc);
+    }
+
+    .dome-showcase-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .dome-showcase .eyebrow {
+      display: block;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .dome-showcase-lead {
+      text-align: center;
+      max-width: 42rem;
+      margin: 0 auto 2.5rem;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: var(--text-mid, #4a3520);
+    }
+
+    .dome-showcase-lead a {
+      color: var(--forest-mid, #3d6b56);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .dome-showcase-lead a:hover {
+      color: var(--forest-rich, #2a4538);
+    }
+
+    .dome-showcase-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 0.9fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .dome-showcase-fig {
+      margin: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--parchment-mid, #c9bca8);
+      box-shadow: 0 12px 40px rgba(24, 15, 6, 0.1);
+    }
+
+    .dome-showcase-fig img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+    }
+
+    .dome-showcase-fig--tall img {
+      min-height: 280px;
+    }
+
+    .dome-showcase-fig figcaption {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted, #7a6248);
+      padding: 0.65rem 0.85rem;
+      background: var(--cream, #f6f0e6);
+    }
+
+    @media (max-width: 900px) {
+      .dome-showcase-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dome-showcase-fig--wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .dome-showcase {
+        padding: 3rem 1.25rem;
+      }
+
+      .dome-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Tighter spacing before vision quote */
+    .pillars {
+      padding-bottom: 4.5rem;
+    }
+
+    .vision {
+      padding: 3.5rem 2rem 4.5rem;
+    }
+
+    /* Subtle section decorations */
+    .has-deco {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Keep vision quote-mark & orbs out of flow (32rem mark was stretching the section) */
+    .has-deco > *:not(.section-deco):not(.vision-bg-mark):not(.vision-orb) {
+      position: relative;
+      z-index: 1;
+    }
+
+    .vision.has-deco .vision-bg-mark,
+    .vision.has-deco .vision-orb {
+      position: absolute;
+      z-index: 0;
+    }
+
+    .section-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      background-repeat: no-repeat;
+      opacity: 0;
+      filter: saturate(0.9);
+      transition:
+        opacity 1.1s ease 0.12s,
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .has-deco.deco-in .section-deco {
+      opacity: 0.28;
+      filter: saturate(1);
+    }
+
+    .has-deco.deco-in .section-deco.deco-vivid {
+      opacity: 0.42;
+    }
+
+    .deco-interconnected,
+    .deco-farm {
+      /* brighter edge fade so more of the art reads */
+      mask-image: radial-gradient(ellipse 78% 78% at 50% 50%, #000 35%, transparent 78%);
+      -webkit-mask-image: radial-gradient(ellipse 78% 78% at 50% 50%, #000 35%, transparent 78%);
+    }
+
+    .deco-interconnected {
+      width: min(46vw, 520px);
+      height: min(46vw, 520px);
+      top: 8%;
+      right: -6%;
+      transform: translateX(22%);
+      background-image: url('images/InterconnectedTechDomes.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .has-deco.deco-in .deco-interconnected {
+      transform: translateX(0);
+    }
+
+    .deco-farm {
+      width: min(50vw, 560px);
+      height: min(42vw, 480px);
+      bottom: -4%;
+      left: -8%;
+      transform: translateX(-22%);
+      background-image: url('FarmDomes.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .has-deco.deco-in .deco-farm {
+      transform: translateX(0);
+    }
+
+    .deco-mountain {
+      width: min(55vw, 620px);
+      height: min(50vw, 560px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateX(-18%);
+      background-image: url('images/domesOnMountainSide.png');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.95) brightness(0.95);
+      mix-blend-mode: screen;
+      mask-image: radial-gradient(ellipse 82% 75% at 50% 50%, #000 25%, transparent 72%);
+      -webkit-mask-image: radial-gradient(ellipse 82% 75% at 50% 50%, #000 25%, transparent 72%);
+    }
+
+    .has-deco.deco-in .deco-mountain {
+      opacity: 0.38;
+      transform: translate(-50%, -50%) translateX(0);
+    }
+
+    .deco-forest {
+      width: min(40vw, 440px);
+      height: min(52vw, 560px);
+      top: 5%;
+      right: 2%;
+      transform: translateX(18%);
+      background-image: url('images/dome-forest-view.jpg');
+      background-size: cover;
+      background-position: center top;
+      mask-image: radial-gradient(ellipse 65% 75% at 60% 40%, #000 18%, transparent 72%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 75% at 60% 40%, #000 18%, transparent 72%);
+    }
+
+    .has-deco.deco-in .deco-forest {
+      transform: translateX(0);
+    }
+
+    .deco-auroville {
+      width: min(44vw, 500px);
+      height: min(44vw, 500px);
+      bottom: 0;
+      right: -4%;
+      transform: translateX(20%);
+      background-image: url('images/dome-auroville-field.jpg');
+      background-size: cover;
+      background-position: center;
+      mask-image: radial-gradient(ellipse 70% 70% at 70% 60%, #000 15%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 70% 60%, #000 15%, transparent 70%);
+    }
+
+    .has-deco.deco-in .deco-auroville {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 760px) {
+      .vision {
+        padding: 3.5rem 1.5rem 5rem;
+      }
+
+      .has-deco.deco-in .section-deco {
+        opacity: 0.22;
+      }
+
+      .has-deco.deco-in .section-deco.deco-vivid {
+        opacity: 0.32;
+      }
+
+      .has-deco.deco-in .deco-mountain {
+        opacity: 0.28;
+      }
+
+      .deco-interconnected {
+        width: 70vw;
+        height: 70vw;
+        top: auto;
+        bottom: -10%;
+        right: -20%;
+        transform: translateX(28%);
+      }
+
+      .deco-farm {
+        width: 75vw;
+        height: 55vw;
+        left: -25%;
+        bottom: -8%;
+        transform: translateX(-28%);
+      }
+
+      .deco-mountain {
+        width: 90vw;
+        height: 70vw;
+        transform: translate(-50%, -50%) translateX(-24%);
+      }
+
+      .deco-forest {
+        width: 65vw;
+        height: 65vw;
+        right: -15%;
+        transform: translateX(24%);
+      }
+
+      .deco-auroville {
+        width: 70vw;
+        height: 70vw;
+        right: -20%;
+        bottom: -5%;
+        transform: translateX(26%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .section-deco {
+        transition: opacity 0.45s ease;
+        transform: none !important;
+      }
+
+      .has-deco.deco-in .section-deco {
+        opacity: 0.2;
+      }
+
+      .has-deco.deco-in .deco-mountain {
+        opacity: 0.26;
+      }
+    }
   </style>
 </head>
 
@@ -192,13 +529,16 @@
   <nav id="nav">
     <a href="#top" class="nav-logo">ABC</a>
     <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#homes">Homes</a></li>
       <li><a href="#pillars">Elements</a></li>
       <li><a href="#vision">Vision</a></li>
       <li><a href="#connect">Connect</a></li>
     </ul>
   </nav>
 
-  <section class="hero" id="top">
+  <section class="hero hero--imaged" id="top">
+    <div class="hero-bg-photo" role="img" aria-label="Visionary geodesic eco-community with domes, gardens, and meditation by a lily pond"></div>
     <div class="hero-canvas">
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
@@ -229,7 +569,8 @@
     </div>
   </section>
 
-  <section class="intro" id="about">
+  <section class="intro has-deco" id="about">
+    <div class="section-deco deco-interconnected deco-vivid" aria-hidden="true"></div>
     <div class="intro-inner reveal">
       <span class="eyebrow">Vision &amp; Mission</span>
       <p class="intro-body">
@@ -245,7 +586,38 @@
     </div>
   </section>
 
-  <section class="pillars" id="pillars">
+  <section class="dome-showcase" id="homes">
+    <div class="dome-showcase-inner reveal">
+      <span class="eyebrow">Regenerative Shelter</span>
+      <p class="dome-showcase-lead">
+        ABC envisions eco-friendly casitas and shared spaces inspired by geodesic living — resilient, efficient, and woven
+        into the land. We are exploring partners such as
+        <a href="https://geoship.is" target="_blank" rel="noopener noreferrer">Geoship</a>
+        and their bioceramic dome homes for future building phases.
+      </p>
+      <div class="dome-showcase-grid">
+        <figure class="dome-showcase-fig dome-showcase-fig--wide reveal reveal-d1">
+          <img src="images/geodesic-visionary-community.png"
+            alt="Visionary geodesic community with domes, gardens, and shared green space" width="1200" height="800"
+            loading="lazy">
+          <figcaption>Community vision</figcaption>
+        </figure>
+        <figure class="dome-showcase-fig dome-showcase-fig--tall reveal reveal-d2">
+          <img src="FarmDomes.png" alt="Farm domes and greenhouse structures on rolling land" width="800" height="600"
+            loading="lazy">
+          <figcaption>Farm &amp; greenhouse domes</figcaption>
+        </figure>
+        <figure class="dome-showcase-fig reveal reveal-d3">
+          <img src="images/dome-forest-view.jpg" alt="Geodesic dome nestled among trees" width="600" height="800"
+            loading="lazy">
+          <figcaption>Dome in the forest</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="pillars has-deco" id="pillars">
+    <div class="section-deco deco-farm deco-vivid" aria-hidden="true"></div>
     <div class="section-head reveal">
       <span class="eyebrow">Core Elements</span>
       <h2 class="section-title">How ABC Comes to Life</h2>
@@ -280,7 +652,9 @@
             <p class="card-pullquote">"Individual homes, shared meals, and room to gather — rural living built for
               connection."</p>
             <p>Each full-time resident, member, or family has their own eco-friendly casita — private space rooted in
-              the land, with the richness of community always nearby.</p>
+              the land, with the richness of community always nearby. Geodesic and bioceramic dome designs (such as
+              <a href="https://geoship.is" target="_blank" rel="noopener noreferrer">Geoship</a>) are among the
+              shelter approaches we are exploring for efficiency, resilience, and harmony with the landscape.</p>
             <p>A central community building anchors daily life: a large kitchen, dining area, lounge, and flexible event
               space for meals, workshops, and celebration.</p>
             <p>Guest rooms or cottages welcome short-term program participants and visiting advocates — so the community
@@ -480,11 +854,12 @@
     </div>
   </section>
 
-  <section class="vision" id="vision">
+  <section class="vision has-deco" id="vision">
+    <div class="section-deco deco-mountain" aria-hidden="true"></div>
     <div class="vision-bg-mark" aria-hidden="true">&ldquo;</div>
     <div class="vision-orb vision-orb-1"></div>
     <div class="vision-orb vision-orb-2"></div>
-    <div class="vision-inner reveal">
+    <div class="vision-inner">
       <span class="eyebrow">Why ABC Matters</span>
       <blockquote class="vision-quote">
         A place where <strong>compassion is lived</strong> — not lectured. Where rescued animals are neighbors, vegan food
@@ -496,7 +871,8 @@
     </div>
   </section>
 
-  <section class="values">
+  <section class="values has-deco">
+    <div class="section-deco deco-forest" aria-hidden="true"></div>
     <div class="values-inner">
       <div class="value-item reveal reveal-d1">
         <span class="value-glyph">I</span>
@@ -519,7 +895,8 @@
     </div>
   </section>
 
-  <section class="cta" id="connect">
+  <section class="cta has-deco" id="connect">
+    <div class="section-deco deco-auroville" aria-hidden="true"></div>
     <span class="eyebrow reveal">Connect</span>
     <h2 class="cta-title reveal"><em>Help us build</em> a refuge for people, animals, and the movement</h2>
     <p class="cta-body reveal">
@@ -536,10 +913,12 @@
   <footer>
     <ul class="footer-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#homes">Homes</a></li>
       <li><a href="#pillars">Elements</a></li>
       <li><a href="#vision">Vision</a></li>
       <li><a href="#connect">Connect</a></li>
       <li><a href="index.html">United Visions</a></li>
+      <li><a href="https://geoship.is" target="_blank" rel="noopener noreferrer">Geoship</a></li>
     </ul>
     <p class="footer-logo">All Beautiful Creatures (ABC)</p>
     <p class="footer-sub">Compassionate Community · Bay Area Region</p>
@@ -617,9 +996,20 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
 
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    const decoIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('deco-in');
+          decoIo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06, rootMargin: '40px 0px -5% 0px' });
+
+    document.querySelectorAll('.has-deco').forEach(section => decoIo.observe(section));
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
