@@ -408,8 +408,14 @@
       filter: saturate(1);
     }
 
+    .has-deco.deco-in .deco-mountain.progressive--low,
+    .has-deco.deco-in .deco-mountain.progressive--mid,
     .has-deco.deco-in .deco-mountain.progressive--full {
-      filter: saturate(0.95) brightness(0.95);
+      filter: saturate(0.72) brightness(0.72);
+    }
+
+    .vision.has-deco {
+      overflow: hidden;
     }
 
     .deco-interconnected {
@@ -441,32 +447,44 @@
     }
 
     .deco-mountain {
-      width: min(55vw, 620px);
-      height: min(50vw, 560px);
+      width: min(78vw, 880px);
+      height: 240px;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) translateX(-18%);
-      background-position: center;
-      filter: saturate(0.95) brightness(0.95);
-      mix-blend-mode: screen;
+      transform: translate(-50%, -50%) translateX(-8%);
+      background-size: cover;
+      background-position: 78% 58%;
+      mix-blend-mode: normal;
+      filter: saturate(0.72) brightness(0.72);
+      -webkit-mask-image: radial-gradient(ellipse 58% 72% at 50% 55%, #000 0%, transparent 70%);
+      mask-image: radial-gradient(ellipse 58% 72% at 50% 55%, #000 0%, transparent 70%);
+      -webkit-mask-composite: source-over;
+      mask-composite: add;
     }
 
     .has-deco.deco-in .deco-mountain {
-      opacity: 0.38;
+      opacity: 0.42;
       transform: translate(-50%, -50%) translateX(0);
     }
 
     .deco-forest {
-      width: min(40vw, 440px);
-      height: min(52vw, 560px);
-      top: 5%;
-      right: 2%;
+      width: min(24vw, 280px);
+      height: min(30vw, 320px);
+      top: auto;
+      bottom: 6%;
+      right: 0;
       transform: translateX(18%);
-      background-position: right top;
+      background-size: cover;
+      background-position: 82% center;
     }
 
     .has-deco.deco-in .deco-forest {
       transform: translateX(0);
+      opacity: 0.2;
+    }
+
+    .values.has-deco {
+      overflow: hidden;
     }
 
     .deco-auroville {
@@ -496,7 +514,7 @@
       }
 
       .has-deco.deco-in .deco-mountain {
-        opacity: 0.28;
+        opacity: 0.34;
       }
 
       .deco-interconnected {
@@ -517,15 +535,17 @@
       }
 
       .deco-mountain {
-        width: 90vw;
-        height: 70vw;
-        transform: translate(-50%, -50%) translateX(-24%);
+        width: 100vw;
+        height: 160px;
+        transform: translate(-50%, -50%);
       }
 
       .deco-forest {
-        width: 65vw;
-        height: 65vw;
-        right: -15%;
+        width: 42vw;
+        height: 42vw;
+        top: auto;
+        bottom: 0;
+        right: -8%;
         transform: translateX(24%);
       }
 
@@ -728,10 +748,11 @@
           <figcaption>Gardens</figcaption>
         </figure>
         <figure class="place-showcase-fig reveal reveal-d3">
-          <img class="progressive-img" src="images/previews/gauze-forest.jpg"
-            data-progressive-mid="images/previews/gauze-forest-md.jpg"
-            data-progressive-full="images/gauze/gauze-forest.jpg" alt="Tall trees and a pale glow of shelter among them"
-            width="864" height="1152" decoding="async">
+          <img class="progressive-img" src="images/previews/gauze-dome.jpg"
+            data-progressive-mid="images/previews/gauze-dome-md.jpg"
+            data-progressive-full="images/gauze/gauze-dome.jpg"
+            alt="A small cedar geodesic dome with a wooden door and deck in a forest clearing" width="864"
+            height="1152" decoding="async">
           <figcaption>Among the trees</figcaption>
         </figure>
       </div>
