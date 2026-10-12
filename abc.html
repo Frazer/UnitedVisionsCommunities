@@ -14,7 +14,7 @@
     rel="stylesheet">
 
   <link id="zen-theme" rel="stylesheet" href="views/sanctuary.css">
-  <link rel="preload" as="image" href="images/previews/geodesic-visionary-community.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="images/previews/gauze-community.jpg" fetchpriority="high">
 
   <style>
     .zen-switch {
@@ -186,17 +186,6 @@
       margin-top: 1.75rem;
     }
 
-    .card-body-inner a {
-      color: var(--forest-mid, #3d6b56);
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 0.15em;
-    }
-
-    .card-body-inner a:hover {
-      color: var(--forest-rich, #2a4538);
-    }
-
     /* Hero background */
     .hero.hero--imaged {
       background: var(--forest-deep, #1a2820);
@@ -214,7 +203,7 @@
       inset: 0;
       background:
         linear-gradient(to bottom, rgba(26, 40, 32, 0.38) 0%, rgba(26, 40, 32, 0.68) 55%, rgba(26, 40, 32, 0.9) 100%),
-        url('images/previews/geodesic-visionary-community.jpg') center 35% / cover no-repeat;
+        url('images/previews/gauze-community.jpg') center 42% / cover no-repeat;
       pointer-events: none;
       transition: filter 0.45s ease;
     }
@@ -237,26 +226,26 @@
       transition: filter 0.45s ease;
     }
 
-    /* Featured dome imagery */
-    .dome-showcase {
+    /* Featured place imagery — soft, unfinished, open to projection */
+    .place-showcase {
       background: var(--cream-warm, #ede5d2);
       padding: 4rem 2rem;
       border-top: 1px solid var(--parchment, #d9cebc);
       border-bottom: 1px solid var(--parchment, #d9cebc);
     }
 
-    .dome-showcase-inner {
+    .place-showcase-inner {
       max-width: 1080px;
       margin: 0 auto;
     }
 
-    .dome-showcase .eyebrow {
+    .place-showcase .eyebrow {
       display: block;
       text-align: center;
       margin-bottom: 0.75rem;
     }
 
-    .dome-showcase-lead {
+    .place-showcase-lead {
       text-align: center;
       max-width: 42rem;
       margin: 0 auto 2.5rem;
@@ -265,25 +254,14 @@
       color: var(--text-mid, #4a3520);
     }
 
-    .dome-showcase-lead a {
-      color: var(--forest-mid, #3d6b56);
-      font-weight: 500;
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-    }
-
-    .dome-showcase-lead a:hover {
-      color: var(--forest-rich, #2a4538);
-    }
-
-    .dome-showcase-grid {
+    .place-showcase-grid {
       display: grid;
       grid-template-columns: 1.15fr 1fr 0.9fr;
       gap: 1rem;
       align-items: stretch;
     }
 
-    .dome-showcase-fig {
+    .place-showcase-fig {
       margin: 0;
       border-radius: 6px;
       overflow: hidden;
@@ -291,7 +269,7 @@
       box-shadow: 0 12px 40px rgba(24, 15, 6, 0.1);
     }
 
-    .dome-showcase-fig img {
+    .place-showcase-fig img {
       display: block;
       width: 100%;
       height: 100%;
@@ -299,11 +277,11 @@
       object-fit: cover;
     }
 
-    .dome-showcase-fig--tall img {
+    .place-showcase-fig--tall img {
       min-height: 280px;
     }
 
-    .dome-showcase-fig figcaption {
+    .place-showcase-fig figcaption {
       font-size: 0.68rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -313,21 +291,21 @@
     }
 
     @media (max-width: 900px) {
-      .dome-showcase-grid {
+      .place-showcase-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .dome-showcase-fig--wide {
+      .place-showcase-fig--wide {
         grid-column: 1 / -1;
       }
     }
 
     @media (max-width: 560px) {
-      .dome-showcase {
+      .place-showcase {
         padding: 3rem 1.25rem;
       }
 
-      .dome-showcase-grid {
+      .place-showcase-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -670,11 +648,11 @@
 
   <section class="hero hero--imaged" id="top">
     <div class="hero-bg-photo progressive-bg" role="img"
-      aria-label="Visionary geodesic eco-community with domes, gardens, and meditation by a lily pond"
-      data-progressive-low="images/previews/geodesic-visionary-community.jpg"
-      data-progressive-mid="images/previews/geodesic-visionary-community-md.jpg"
-      data-progressive-full="images/previews/geodesic-visionary-community-md.jpg"
-      data-progressive-position="center 35% / cover no-repeat"></div>
+      aria-label="A garden and lily pond seen through sheer curtains, with a path leading into warm light"
+      data-progressive-low="images/previews/gauze-community.jpg"
+      data-progressive-mid="images/previews/gauze-community-md.jpg"
+      data-progressive-full="images/gauze/gauze-community.jpg"
+      data-progressive-position="center 42% / cover no-repeat"></div>
     <div class="hero-canvas">
       <div class="orb orb-1"></div>
       <div class="orb orb-2"></div>
@@ -707,9 +685,9 @@
 
   <section class="intro has-deco" id="about">
     <div class="section-deco deco-interconnected deco-vivid progressive-bg" aria-hidden="true"
-      data-progressive-low="images/previews/InterconnectedTechDomes.jpg"
-      data-progressive-mid="images/previews/InterconnectedTechDomes-md.jpg"
-      data-progressive-full="images/previews/InterconnectedTechDomes-md.jpg"></div>
+      data-progressive-low="images/previews/gauze-linked.jpg"
+      data-progressive-mid="images/previews/gauze-linked-md.jpg"
+      data-progressive-full="images/gauze/gauze-linked.jpg"></div>
     <div class="intro-inner reveal">
       <span class="eyebrow">Vision &amp; Mission</span>
       <p class="intro-body">
@@ -725,38 +703,36 @@
     </div>
   </section>
 
-  <section class="dome-showcase" id="homes">
-    <div class="dome-showcase-inner reveal">
-      <span class="eyebrow">Regenerative Shelter</span>
-      <p class="dome-showcase-lead">
-        ABC envisions eco-friendly casitas and shared spaces inspired by geodesic living — resilient, efficient, and
-        woven
-        into the land. We are exploring partners such as
-        <a href="https://geoship.is" target="_blank" rel="noopener noreferrer">Geoship</a>
-        and their bioceramic dome homes for future building phases.
+  <section class="place-showcase" id="homes">
+    <div class="place-showcase-inner reveal">
+      <span class="eyebrow">A Place to Live</span>
+      <p class="place-showcase-lead">
+        Eco-friendly casitas and shared rooms, set into gardens and quiet land. Private enough for a life of your own,
+        close enough that community is always nearby — and still open, so the place can become what the people who
+        gather here imagine.
       </p>
-      <div class="dome-showcase-grid">
-        <figure class="dome-showcase-fig dome-showcase-fig--wide reveal reveal-d1">
-          <img class="progressive-img" src="images/previews/geodesic-visionary-community.jpg"
-            data-progressive-mid="images/previews/geodesic-visionary-community-md.jpg"
-            data-progressive-full="images/previews/geodesic-visionary-community-md.jpg"
-            alt="Visionary geodesic community with domes, gardens, and shared green space" width="1200" height="800"
+      <div class="place-showcase-grid">
+        <figure class="place-showcase-fig place-showcase-fig--wide reveal reveal-d1">
+          <img class="progressive-img" src="images/previews/gauze-gathering.jpg"
+            data-progressive-mid="images/previews/gauze-gathering-md.jpg"
+            data-progressive-full="images/gauze/gauze-gathering.jpg"
+            alt="A sunlit meadow and a long table, seen through sheer fabric" width="1152" height="864"
             decoding="async">
-          <figcaption>Community vision</figcaption>
+          <figcaption>Gathering</figcaption>
         </figure>
-        <figure class="dome-showcase-fig dome-showcase-fig--tall reveal reveal-d2">
-          <img class="progressive-img" src="images/previews/FarmDomes.jpg"
-            data-progressive-mid="images/previews/FarmDomes-md.jpg"
-            data-progressive-full="images/previews/FarmDomes-md.jpg"
-            alt="Farm domes and greenhouse structures on rolling land" width="800" height="600" decoding="async">
-          <figcaption>Farm &amp; greenhouse domes</figcaption>
+        <figure class="place-showcase-fig place-showcase-fig--tall reveal reveal-d2">
+          <img class="progressive-img" src="images/previews/gauze-gardens.jpg"
+            data-progressive-mid="images/previews/gauze-gardens-md.jpg"
+            data-progressive-full="images/gauze/gauze-gardens.jpg"
+            alt="A flower and vegetable garden in warm mist" width="864" height="1152" decoding="async">
+          <figcaption>Gardens</figcaption>
         </figure>
-        <figure class="dome-showcase-fig reveal reveal-d3">
-          <img class="progressive-img" src="images/previews/dome-forest-view.jpg"
-            data-progressive-mid="images/previews/dome-forest-view-md.jpg"
-            data-progressive-full="images/dome-forest-view.jpg" alt="Geodesic dome nestled among trees" width="600"
-            height="800" decoding="async">
-          <figcaption>Dome in the forest</figcaption>
+        <figure class="place-showcase-fig reveal reveal-d3">
+          <img class="progressive-img" src="images/previews/gauze-forest.jpg"
+            data-progressive-mid="images/previews/gauze-forest-md.jpg"
+            data-progressive-full="images/gauze/gauze-forest.jpg" alt="Tall trees and a pale glow of shelter among them"
+            width="864" height="1152" decoding="async">
+          <figcaption>Among the trees</figcaption>
         </figure>
       </div>
     </div>
@@ -764,8 +740,8 @@
 
   <section class="pillars has-deco" id="pillars">
     <div class="section-deco deco-farm deco-vivid progressive-bg" aria-hidden="true"
-      data-progressive-low="images/previews/FarmDomes.jpg" data-progressive-mid="images/previews/FarmDomes-md.jpg"
-      data-progressive-full="images/previews/FarmDomes-md.jpg"></div>
+      data-progressive-low="images/previews/gauze-gardens.jpg" data-progressive-mid="images/previews/gauze-gardens-md.jpg"
+      data-progressive-full="images/gauze/gauze-gardens.jpg"></div>
     <div class="section-head reveal">
       <span class="eyebrow">Core Elements</span>
       <h2 class="section-title">How ABC Comes to Life</h2>
@@ -800,9 +776,8 @@
             <p class="card-pullquote">"Individual homes, shared meals, and room to gather — rural living built for
               connection."</p>
             <p>Each full-time resident, member, or family has their own eco-friendly casita — private space rooted in
-              the land, with the richness of community always nearby. Geodesic and bioceramic dome designs (such as
-              <a href="https://geoship.is" target="_blank" rel="noopener noreferrer">Geoship</a>) are among the
-              shelter approaches we are exploring for efficiency, resilience, and harmony with the landscape.
+              the land, with the richness of community always nearby. The shape of that shelter is still open: something
+              gentle, resilient, and at home in the landscape, chosen with the people who will live there.
             </p>
             <p>A central community building anchors daily life: a large kitchen, dining area, lounge, and flexible event
               space for meals, workshops, and celebration.</p>
@@ -1012,9 +987,9 @@
 
   <section class="vision has-deco" id="vision">
     <div class="section-deco deco-mountain progressive-bg" aria-hidden="true"
-      data-progressive-low="images/previews/domesOnMountainSide.jpg"
-      data-progressive-mid="images/previews/domesOnMountainSide-md.jpg"
-      data-progressive-full="images/previews/domesOnMountainSide-md.jpg"></div>
+      data-progressive-low="images/previews/gauze-hills.jpg"
+      data-progressive-mid="images/previews/gauze-hills-md.jpg"
+      data-progressive-full="images/gauze/gauze-hills.jpg"></div>
     <div class="vision-bg-mark" aria-hidden="true">&ldquo;</div>
     <div class="vision-orb vision-orb-1"></div>
     <div class="vision-orb vision-orb-2"></div>
@@ -1033,9 +1008,9 @@
 
   <section class="values has-deco">
     <div class="section-deco deco-forest progressive-bg" aria-hidden="true"
-      data-progressive-low="images/previews/dome-forest-view.jpg"
-      data-progressive-mid="images/previews/dome-forest-view-md.jpg"
-      data-progressive-full="images/dome-forest-view.jpg"></div>
+      data-progressive-low="images/previews/gauze-forest.jpg"
+      data-progressive-mid="images/previews/gauze-forest-md.jpg"
+      data-progressive-full="images/gauze/gauze-forest.jpg"></div>
     <div class="values-inner">
       <div class="value-item reveal reveal-d1">
         <span class="value-glyph">I</span>
@@ -1070,13 +1045,6 @@
           </a>
         </li>
         <li class="reveal reveal-d2">
-          <a href="https://geoship.is" class="links-external" target="_blank" rel="noopener noreferrer">
-            <span class="links-name">Geoship</span>
-            <span class="links-desc">Bioceramic geodesic dome homes — resilient shelter we are exploring for
-              casitas.</span>
-          </a>
-        </li>
-        <li class="reveal reveal-d3">
           <a href="https://www.oscarsplace.org/donkey-king" class="links-external" target="_blank"
             rel="noopener noreferrer">
             <span class="links-name">Donkey King</span>
@@ -1090,9 +1058,9 @@
 
   <section class="cta has-deco" id="connect">
     <div class="section-deco deco-auroville progressive-bg" aria-hidden="true"
-      data-progressive-low="images/previews/dome-auroville-field.jpg"
-      data-progressive-mid="images/previews/dome-auroville-field-md.jpg"
-      data-progressive-full="images/dome-auroville-field.jpg"></div>
+      data-progressive-low="images/previews/gauze-gathering.jpg"
+      data-progressive-mid="images/previews/gauze-gathering-md.jpg"
+      data-progressive-full="images/gauze/gauze-gathering.jpg"></div>
     <span class="eyebrow reveal">Connect</span>
     <h2 class="cta-title reveal"><em>Help us build</em> a refuge for people, animals, and the movement</h2>
     <p class="cta-body reveal">
