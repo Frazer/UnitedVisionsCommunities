@@ -1,0 +1,50 @@
+{
+  "tool": "Built-in image_gen",
+  "originalsAvailable": false,
+  "images": [
+    {
+      "name": "dome-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. A person sitting peacefully inside a beautifully lit geodesic dome community space, warm lamps and sunlight illuminating timber, cushions and plants, welcoming lived-in atmosphere. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "cooking-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. Excited engaged diverse adults learning to cook vegetables together in a welcoming community teaching kitchen, hands preparing colorful vegetables, candid joy and conversation. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "sanctuary-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. A small diverse group of friends standing peacefully in a green sanctuary field with two donkeys, piggies, a small cow and her calf, all animals anatomically realistic and clearly visible, respectful calm interaction, late afternoon light. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "play-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. Children playing joyfully outside in a grassy community meadow, running and playing together with adults nearby, candid natural movement, warm sunshine. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "gardens-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. Beautiful thriving community vegetable gardens with people tending raised beds of kale, carrots and tomatoes, rich soil, abundant healthy produce, morning light. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "greenhouse-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. Inside a community greenhouse growing beautiful vegetables, lush tomato vines, leafy greens and people harvesting together, translucent glass and warm daylight. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "movies-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. Community movie night at dusk, friends and families relaxing on cushions watching an outdoor projection screen beside a softly glowing dome, screen showing simple abstract landscape without recognizable film content, cozy string lights. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "aerial-photo",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Photorealistic natural editorial photograph. A group of adults working out together on an outdoor aerial fitness structure, silks and aerial hoops over thick safety mats, low height controlled poses with instructor, meadow and community domes in background. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "cooking-comic",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Expressive hand inked comic illustration, one rich full-page scene without panels or speech bubbles. A joyful excited community cooking class preparing beautiful vegetables together, lively gestures, dynamic composition, rich warm colors, friendly faces. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "aerial-abstract",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Abstract fine art painting capturing communal aerial movement and exercise: sweeping arcs and ribbons suggesting aerial silks, interlocking human forms, circles and warm sunlight, energetic but harmonious, sophisticated textured composition. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    },
+    {
+      "name": "gardens-impressionist",
+      "prompt": "Create one standalone landscape image for the ABC community vision gallery. Impressionist oil painting of a thriving community vegetable garden and greenhouse, people tending beautiful vegetables together, luminous morning light, visible broken brushstrokes, rich greens and warm golds, lush painterly texture. Landscape composition, no text, no logos, no watermark. Depict a welcoming compassionate intentional community. This is a new interpretation of a written vision."
+    }
+  ]
+}
